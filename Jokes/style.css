@@ -1,121 +1,57 @@
     h1{
-        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+        font-family:'Advent pro',sans-serif;
         color:#ffffff; 
         font-weight: bold;
         font-size: 3em;
         text-align: center;
+        margin-top: 15%;
     }
-/* 
+
     h2{
         font-family: 'Advent pro',sans-serif;
         font-weight: 200;
         color:#000000;
-        text-align: center;
-        font-size: 1em 
+        font-size: 2em ;
+        text-align: center; 
     }    
-    
+
     h3{
         font-family: 'Advent pro',sans-serif;
-        color:#000000;
-        font-size: 1.1em 
-    }
-
-    h4 {
-        font-family: 'Advent pro',sans-serif;
-        color:#000000;
         font-weight: 200;
-        text-align: right;
-        font-size: 0,5em 
-    }  */
+        color:#000000;
+        font-size: 2em ;
+        text-align: center; 
+       /*  opacity: 0%; */
+    }  
 
     p{
         font-family: 'Advent pro',sans-serif;
-        font-weight: 200;
+        font-style: italic;
+        font-weight: 100;
         color:#000000;
-        font-size: 1em 
+        font-size: 1em ;
+        text-align: center; 
     }
 
-   /*  #annonces{
-        height: fit-content;
-        width: fit-content;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        align-self: center;
-    } 
-
-    .annonce {
-        display: flex;
-        background-color: white;
-        border-radius: 12px;
-        column-gap: 3%;
-        max-width: 70%;
-        align-content: space-between;
-        justify-content: space-around;
-        padding: 1%;
-        margin: 1%;
-        align-self: center;
-        opacity: 50%;
-    }
-    .img{
-        width: 150px;
-        height: 150px;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: cover;
-        background-color: aquamarine;
-        border-radius: 2px;
-        align-self: center;
-      }  
-
-    .base{
-        display: flex;
-        flex-direction: column;
-    } 
-
-    .presentation {
-         max-width: 40%; 
-    }
- */
     #background{
+        display: flex;
+        flex-direction: column;
         min-width: auto;
         min-height: 968px;
         background-size: cover ;  
         background: linear-gradient(180deg, #89A3FF 4.69%, #FFC9C9 31.25%, #FAE082 61.98%, #DFFFAA 100%) no-repeat;
     } 
 
-/*     #hero{
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        margin-bottom: 2% ;
-    } */
-
-/*      #sousTitre {
-        display: flex;
+    .contenantLaBlague {
+        margin-bottom: 1%;
+        display: block;
+        justify-self: center;
         align-self: center;
-        width: fit-content ;
+        width: fit-content;
         background-color: white;
         border-radius: 6px;
         padding: 1%;
-    }  */
-
-/*     .timingAnnonce {
-        position: relative;
-        z-index: 2;
-        margin-left: 15%;
-        margin-bottom: -2%;
-        align-self: left;
-        width:fit-content ;
-        background: #DFFFAA;
-        border-radius: 12px ;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        padding-left: 0.5%;
-        padding-right: 0.5%;
-    }
- */
-/*     .annonce:hover{
-        opacity: 100%;
-      } */
+    }  
+/* 
+    h3:hover{
+        opacity: 100%;} */
