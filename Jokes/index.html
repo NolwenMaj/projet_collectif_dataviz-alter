@@ -7,27 +7,47 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_package_v0.16/favicon-32x32.png">
     <title>hihi</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
 <body id="background">
-    <h1> QUELLE GROSSE MARADE</h1>
-    <div id ="contenantButtons">
+    <div id="enTete">
+        <a style="text-decoration:none" href="#" onmouseenter="playAudio()"> <h1> QUELLE GROSSE MARADE</h1></a>
+        <audio id="sound">    
+            <source src="GrosseMarade.mp3" type="audio/mpeg"/>
+        </audio>
+    </div> 
+    <div id="contenantButtons">
         <button class="buttons" id="getAJoke"> Get a joke !</button>
-<!--         <button class="buttons" id="Linux"> Linux </button>
-        <button class="buttons" id="MacOS"> MacOS </button>
-        <button class="buttons" id="Windows"> Windows </button>
-        <button class="buttons" id="Chuck Norris"> Chuck Norris </button>
-        <button class="buttons" id="Others"> Others </button> -->
     </div>
     <div id="mainDiv">
         <div id="blague">  
             <h2 id="joke"></h2>
             <h2 id="response"></h2>
         </div>  
-        <div id="meme"></div> 
+        <div id="meme">
+        </div> 
     </div>
-</div>
-    <script src="script.js"></script>     
+    <script src="script.js"></script>    
+    <script>
+        var audio1 = document.getElementById("sound");
+        function playAudio() {audio1.play();}
+    </script>
 </body>
 </html>
 
- <!--       <p> Passe ta souris sur le bloc !</p> -->
+<!-- bouton lancant le son  -->
+<!--     <div id="contenantButtons">
+        <button class="buttons" onclick=playAudio() type="button"><h1> QUELLE GROSSE MARADE</h1></button>
+        </div >-->
+    
+<!-- boutons selection types de blagues    -->     
+<!--    <button class="buttons" id="Linux"> Linux </button>
+        <button class="buttons" id="MacOS"> MacOS </button>
+        <button class="buttons" id="Windows"> Windows </button>
+        <button class="buttons" id="Chuck Norris"> Chuck Norris </button>
+        <button class="buttons" id="Others"> Others </button> -->
+
+        <!--  <script>  var x = document.getElementById("myAudio"); 
+function playAudio() { 
+  x.play(); 
+} </script>  -->
