@@ -1,4 +1,4 @@
-let memeBase = {
+ let memeBase = {
     success: true,
     data: {
       memes: [
@@ -856,11 +856,9 @@ getAJoke.onclick = () => {
         })
         .catch(function (err) {
         }) ;
-    let n =parseInt(getRandomArbitrary(0,99))
+    let n =parseInt(getRandomArbitrary(0,twoLines.length))
     displayDoubleMeme(n)   
 }
-
- 
 
 
 
