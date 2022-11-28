@@ -19,9 +19,44 @@
         margin-bottom: 1%;
     }
 
+    .innerParentColumn {
+        width:60% ;
+        background-color: #ffffff;
+        padding-left: 5% ;
+        padding-right: 5%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2%;
+        margin-top: 2%;
+    }
+
+    #titleArticle {
+        font-weight: bold; 
+        font-family: 'Advent pro',sans-serif;
+        font-size: 1em ;
+        text-align: center;  
+   /*      text-decoration:none; */ 
+    }
+
+    #imagesNews {
+    padding-right: 20px ;
+    }
+
+    #descriptionArticle {
+        font-weight: 200;
+        font-family: 'Advent pro',sans-serif;
+        font-size: 1em ; 
+        text-align: left;
+        color: #000000;
+    }
+
     #divButtons{
         justify-items: space-around;
         justify-content: space-around;
+        align-items: center;
     }
 
     #divDisplay{
@@ -75,7 +110,6 @@
 
     p{
         font-family: 'Advent pro',sans-serif;
-        font-style: italic;
         font-weight: 100;
         color:#000000;
         font-size: 1em ;
@@ -84,5 +118,15 @@
 
     .buttons:hover{
         font-weight : bold ;
-        color : #89A3FF
+        color : #89A3FF;
+        cursor: pointer;
     }
+
+    #titleArticle:hover{
+        font-weight : thin;
+        color : #89A3FF;
+        cursor: pointer;
+        
+    }
+
+
