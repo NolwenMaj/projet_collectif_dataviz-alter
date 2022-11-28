@@ -1,4 +1,6 @@
- let memeBase = {
+ /*  ----------------------  MEMES  ----------------------*/
+
+  let memeBase = {
     success: true,
     data: {
       memes: [
@@ -805,7 +807,7 @@
       ],
     },
   };
-  
+
   let oneLine = [];
   let twoLines = [];
 
@@ -820,12 +822,6 @@
   }
   
 memesSort(memeBase);
-console.log(twoLines)
-
-let urlJoke = "https://official-joke-api.appspot.com/jokes/programming/random"
-let joke;
-let response;
-let urlMeme ="https://api.imgflip.com/get_memes"
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -840,6 +836,15 @@ divJoke.innerHTML = "";
 divJoke.appendChild(imageMeme); 
 }
 
+getAMeme.onclick =() =>{
+  let n =parseInt(getRandomArbitrary(0,twoLines.length))
+  displayDoubleMeme(n) 
+}
+
+/* ---------------- API BLAGUE ------------------------------ */
+
+let urlJoke = "https://official-joke-api.appspot.com/jokes/programming/random"
+                     
 getAJoke.onclick = () => {
     fetch(urlJoke)
         .then(function (res) {
@@ -848,18 +853,44 @@ getAJoke.onclick = () => {
         }
         })
         .then(function (value) {
-        joke = value[0].setup;
-        response = value[0].punchline;
         document.getElementById("joke").innerHTML = value[0].setup;
         document.getElementById("response").innerHTML = value[0].punchline;
         return joke, response;
         })
         .catch(function (err) {
-        }) ;
-    let n =parseInt(getRandomArbitrary(0,twoLines.length))
-    displayDoubleMeme(n)   
+        }) ;  
 }
 
+/* ----------------- API METEO -------------------------------------*/
+
+let urlMeteo = "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto"
+let now = new Date().getHours("fr-FR")
+now=parseInt(now)
+
+function asynchrone(){
+  fetch(urlMeteo)
+  .then(function (response) {
+    if (response.ok) {
+        return response.json();
+    }
+  })
+  .then(function (data) {
+    console.log(data)
+    document.getElementById("temp").innerHTML = "Temperature actuelle : "+ data.hourly.temperature_2m[now] + " °C";
+    document.getElementById("min").innerHTML = "Minimale : "+ data.daily.temperature_2m_min[0]+ " °C";
+    document.getElementById("max").innerHTML = "Maximale : "+ data.daily.temperature_2m_max[0] + " °C";
+  })
+    .catch(function (erreurs) {
+    }) ;   
+}
+
+asynchrone()
+
+
+
+
+
+/* -------OLD STUFF */
 
 
 /*     fetch(urlMeme)
@@ -883,7 +914,7 @@ getAJoke.onclick = () => {
             // Une erreur est survenue
         }) ; */
 
-
+/* let urlMeme ="https://api.imgflip.com/get_memes" */
 
 
     /* "https://apimeme.com/meme?meme=Hide-the-Pain-Harold&top=" +
