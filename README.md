@@ -2,6 +2,7 @@
 projet_collectif_dataviz-alter created by GitHub Classroom
 
 liste des trucs à fixer avant présentation : 
+- new div avec padding et radius pour jokes + meme
 - rajouter fog
 - no repeat des linear gradients lever et coucher soleil
 -  apis des news à remettre
