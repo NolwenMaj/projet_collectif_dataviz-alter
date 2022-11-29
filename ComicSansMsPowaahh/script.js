@@ -875,15 +875,17 @@ linearLeverSoleil =
 linearCoucherSoleil =
   "linear-gradient(180deg, #0E0036 0%, #293254 13.02%, #ACBEFE 65.1%, rgba(198, 172, 254, 0.62) 81.25%, rgba(255, 166, 230, 0.55) 85.94%, rgba(250, 224, 130, 0.85) 96.35%)";
 
-if (now > 8.5 && now < 16.5) {
-  document.body.style.backgroundColor = colorDay;
-} else if (now >= 8 && now <= 8.5) {
-  document.body.style.background = linearLeverSoleil;
-} else if (now >= 16.5 && now <= 17) {
-  document.body.style.background = linearCoucherSoleil;
-} else {
-  document.body.style.backgroundColor = colorNight;
-}
+// gestion du fond en fonction de l'heure de la journée 
+
+  if (now > 8.5 && now < 16.5) { // jour
+    document.body.style.backgroundColor = colorDay;
+  } else if (now >= 8 && now <= 8.5) { // lever du soleil
+    document.body.style.background = linearLeverSoleil ;
+  } else if (now >= 16.5 && now <= 17) { // coucher du soleil
+    document.body.style.background = linearCoucherSoleil;
+  } else {
+    document.body.style.backgroundColor = colorNight; // nuit
+  }
 
 function asynchrone() {
   fetch(urlMeteo)
@@ -892,7 +894,7 @@ function asynchrone() {
         return response.json();
       }
     })
-    .then(function (data) {
+    .then(function (data) { // affichage des pictos de la météo
       document.getElementById("temp").innerHTML =
         "Temperature actuelle : " +
         data.hourly.temperature_2m[nowParsed] +
