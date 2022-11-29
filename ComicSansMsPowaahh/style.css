@@ -1,7 +1,7 @@
  body {
    padding: 0;
    margin: 0;
-   min-height: 100vh;
+   min-height: 130vh;
  }
 
   .container{
@@ -211,12 +211,12 @@
 
  .innerParentColumn {
    width: 60%;
-   background-color: #ffffff;
+   background-color: #ffffff4a;
    padding-left: 5%;
    padding-right: 5%;
    padding-top: 2%;
    padding-bottom: 2%;
-   border-radius: 10px;
+   border-radius: 20px;
    display: flex;
    flex-direction: column;
    margin-bottom: 2%;
@@ -330,7 +330,7 @@
     background: transparent;
     outline: none;
     font-size: 28px;
-    color: #111111;
+    color: white;
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.15s;
   }
   .buttons:after, .buttons:before {
@@ -426,7 +426,14 @@
 
  #titleArticle:hover {
    font-weight: thin;
-   color: #89A3FF;
+   color: #FFA6E6 ;
    cursor: pointer;
-
  }
+
+ .temperatures {
+  font-family: 'Advent pro', sans-serif;
+  font-weight: 200;
+  color: #ffffff;
+  font-size: 1.5em;
+  text-align: center;
+}
