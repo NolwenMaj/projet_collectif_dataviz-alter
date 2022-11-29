@@ -1,199 +1,298 @@
- body{
-    padding:0;
-    margin:0;
-   min-height:100vh;
-  } 
+ body {
+   padding: 0;
+   margin: 0;
+   min-height: 100vh;
+ }
 
-  .container{
-    height: 100%;
-    width: 100%;
-    min-height: 968px;
-    min-width: 1024px;
-    position: absolute;
-    object-fit: cover;
-  } 
-  .snowfall{
-    background-image: url("neige.png");
-    min-height: 968px;
-     background-size: 700px 400px; 
+ .container {
+   height: 100%;
+   width: 100%;
+   min-height: 968px;
+   min-width: 1024px;
+   position: absolute;
+   object-fit: cover;
+ }
+
+ .snowfall {
+   background-image: url("neige.png");
+   min-height: 968px;
+   background-size: 700px 400px;
    /*  background-repeat: repeat;
     height: auto;
     width: max-content ;*/
-    animation:snowfall 5s linear forwards infinite; 
-    -webkit-animation:snowfall 5s linear forwards infinite;  
-  }
+   animation: snowfall 5s linear forwards infinite;
+   -webkit-animation: snowfall 5s linear forwards infinite;
+ }
 
-  .rainfall {
-    background-image: url("pluie.png");
-    min-height: 968px;
-    background-size: 700px 400px; 
-    animation:rainfall 5s linear forwards infinite; 
-    -webkit-animation:rainfall 5s linear forwards infinite;  
-  }
+ .rainfall {
+   background-image: url("pluie.png");
+   min-height: 968px;
+   background-size: 700px 400px;
+   animation: rainfall 5s linear forwards infinite;
+   -webkit-animation: rainfall 5s linear forwards infinite;
+ }
 
-   @keyframes snowfall{
-    0%{
-      background-position: 0 0;
-    }
-    20%{
-      background-position: 20px 20px;
-    }
-    40%{
-      background-position: 40px 40px;
-    }
-    60%{
-      background-position: 60px 60px;
-    }
-    80%{
-      background-position: 80px 80px;
-    }
-    100%{
-      background-position: 100px 100px;
-    }
-  }
-  @-webkit-keyframes snowfall{
-    0%{
-      background-position: 0 0;
-    }
-    20%{
-      background-position: 20px 20px;
-    }
-    40%{
-      background-position: 40px 40px;
-    }
-    60%{
-      background-position: 60px 60px;
-    }
-    80%{
-      background-position: 80px 80px;
-    }
-    100%{
-      background-position: 100px 100px;
-    }
-  }
+ @keyframes snowfall {
+   0% {
+     background-position: 0 0;
+   }
 
-  #parent {
-    width:100% ;
-    height :100% ;
-    align-items: center;
-    align-content: center; 
-    display: flex;
-    flex-direction: column;
-}
+   20% {
+     background-position: 20px 20px;
+   }
 
-.innerParent {
-    width:60% ;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1%;
-}
+   40% {
+     background-position: 40px 40px;
+   }
 
-.innerParentColumn {
-    width:60% ;
-    background-color: #ffffff;
-    padding-left: 5% ;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2%;
-    margin-top: 2%;
-}
+   60% {
+     background-position: 60px 60px;
+   }
 
-#titleArticle {
-    font-weight: bold; 
-    font-family: 'Advent pro',sans-serif;
-    font-size: 1em ;
-    text-align: center;   
-}
+   80% {
+     background-position: 80px 80px;
+   }
 
-#imagesNews {
-padding-right: 20px ;
-}
+   100% {
+     background-position: 100px 100px;
+   }
+ }
 
-#descriptionArticle {
-    font-weight: 200;
-    font-family: 'Advent pro',sans-serif;
-    font-size: 1em ; 
-    text-align: left;
-    color: #000000;
-}
+ @-webkit-keyframes snowfall {
+   0% {
+     background-position: 0 0;
+   }
 
-#divButtons{
-    justify-items: space-around;
-    justify-content: space-around;
-    align-items: center;
-}
+   20% {
+     background-position: 20px 20px;
+   }
 
-#divDisplay{
-    justify-items: center;
-    justify-content: center; 
-}
+   40% {
+     background-position: 40px 40px;
+   }
 
-.buttons {
-    background-color: #ffffff;
-    border-radius: 10px;
-    width : fit-content ;
-    font-family: 'Advent pro',sans-serif;
-    font-weight: 100;
-    color:#000000;
-    font-size: 1em ;
-    text-align: center;
-    padding: 1%;
-    margin: 1%;
-}
+   60% {
+     background-position: 60px 60px;
+   }
 
-#blague{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: white;
-    padding: 1%;
-    object-fit: contain;
-}
+   80% {
+     background-position: 80px 80px;
+   }
 
-#meme {
-    max-width: 300px;  
-    object-fit: contain;
-}
+   100% {
+     background-position: 100px 100px;
+   }
+ }
 
-h1{
-    font-family:'Advent pro',sans-serif;
-    color:#ffffff; 
-    font-weight: bold;
-    font-size: 3em;
-    text-align: center;
-    margin-top: 5%;
-}
+ #entete {
+   height: 150px;
+   text-align: center;
+ }
 
-h2{
-    font-family: 'Advent pro',sans-serif;
-    font-weight: 200;
-    color:#000000;
-    font-size: 2em ;
-    text-align: center; 
-}    
+ h1 {
+   animation: arrive-gauche-bonds 1s ease-in-out forwards;
+   padding: 50px;
+ }
 
-p{
-    font-family: 'Advent pro',sans-serif;
-    font-weight: 100;
-    color:#000000;
-    font-size: 1em ;
-    text-align: center; 
-}
+ @keyframes arrive-gauche-bonds {
+   0% {
+     transform: translateX(-50%) translateY(+80%);
+   }
 
-.buttons:hover{
-    font-weight : bold ;
-    color : #89A3FF;
-    cursor: pointer;
-}
+   10% {
+     transform: translateX(-45%) translateY(+100%);
+   }
 
-#titleArticle:hover{
-    font-weight : thin;
-    color : #89A3FF;
-    cursor: pointer;
-    
-}
-  
+   20% {
+     transform: translateX(-38%) translateY(+36%);
+   }
+
+   30% {
+     transform: translateX(-35%) translateY(0%);
+   }
+
+   40% {
+     transform: translateX(-30%) translateY(+20%);
+   }
+
+   50% {
+     transform: translateX(-25%) translateY(+24%);
+   }
+
+   60% {
+     transform: translateX(-20%) translateY(0%);
+   }
+
+   70% {
+     transform: translateX(-15%) translateY(+10%);
+   }
+
+   80% {
+     transform: translateX(-10%) translateY(0%);
+   }
+
+   90% {
+     transform: translateX(-5%) translateY(+10%);
+   }
+
+   100% {
+     transform: translateX(0px) translateY(+5%);
+   }
+
+ }
+
+ #parent {
+   width: 100%;
+   height: 100%;
+   align-items: center;
+   align-content: center;
+   display: flex;
+   flex-direction: column;
+ }
+
+ .innerParent {
+   width: 60%;
+   display: flex;
+   flex-direction: row;
+   margin-bottom: 1%;
+ }
+
+ .innerParentColumn {
+   width: 60%;
+   background-color: #ffffff;
+   padding-left: 5%;
+   padding-right: 5%;
+   padding-top: 2%;
+   padding-bottom: 2%;
+   border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 2%;
+   margin-top: 2%;
+   opacity: 0%;
+   /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+   animation: arrive-droite 1s 1s ease-out forwards
+     /*timing-function delay iteration-count direction fill-mode*/
+   ;
+ }
+
+ @keyframes arrive-droite {
+   0% {
+     transform: translateX(+90%);
+     width: 100%;
+     opacity: 0.5;
+   }
+
+   80% {
+     transform: translateX(-40%);
+     width: 40%;
+     opacity: 1;
+   }
+
+   90%{
+    transform: translateX(0%);
+    width: 60%;
+    opacity: 1;
+   }
+
+   100% {
+     transform: translateX(0%);
+     width: 60%;
+     opacity: 1;
+   }
+ }
+
+ #titleArticle {
+   font-weight: bold;
+   font-family: 'Advent pro', sans-serif;
+   font-size: 1em;
+   text-align: center;
+ }
+
+ #imagesNews {
+   padding-right: 20px;
+ }
+
+ #descriptionArticle {
+   font-weight: 200;
+   font-family: 'Advent pro', sans-serif;
+   font-size: 1em;
+   text-align: left;
+   color: #000000;
+ }
+
+ #divButtons {
+   justify-items: space-around;
+   justify-content: space-around;
+   align-items: center;
+ }
+
+ #divDisplay {
+   justify-items: center;
+   justify-content: center;
+ }
+
+ .buttons {
+   background-color: #ffffff;
+   border-radius: 10px;
+   width: fit-content;
+   font-family: 'Advent pro', sans-serif;
+   font-weight: 100;
+   color: #000000;
+   font-size: 1em;
+   text-align: center;
+   padding: 1%;
+   margin: 1%;
+ }
+
+ #blague {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   background-color: white;
+   padding: 1%;
+   object-fit: contain;
+ }
+
+ #meme {
+   max-width: 300px;
+   object-fit: contain;
+ }
+
+ h1 {
+   font-family: 'Advent pro', sans-serif;
+   color: #ffffff;
+   font-weight: bold;
+   font-size: 3em;
+   text-align: center;
+   margin-top: 5%;
+ }
+
+ h2 {
+   font-family: 'Advent pro', sans-serif;
+   font-weight: 200;
+   color: #000000;
+   font-size: 2em;
+   text-align: center;
+ }
+
+ p {
+   font-family: 'Advent pro', sans-serif;
+   font-weight: 100;
+   color: #000000;
+   font-size: 1em;
+   text-align: center;
+ }
+
+ .buttons:hover {
+   font-weight: bold;
+   color: #89A3FF;
+   cursor: pointer;
+ }
+
+ #titleArticle:hover {
+   font-weight: thin;
+   color: #89A3FF;
+   cursor: pointer;
+
+ }
