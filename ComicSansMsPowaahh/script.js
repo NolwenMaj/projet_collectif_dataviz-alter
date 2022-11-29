@@ -862,28 +862,32 @@ getAJoke.onclick = () => {
 
 /* ----------------- API METEO -------------------------------------*/
 
-let urlMeteo =
-  "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto";
-/* let now = new Date().getHours("fr-FR") */
-let now = 8.2;
-let intemperies = document.getElementById("intemperies");
-let nowParsed = parseInt(now);
-colorDay = "#acbefe";
-colorNight = "#293254";
-linearLeverSoleil =
-  "linear-gradient(180deg, #080060 0%, #89A3FF 44.79%, #FAE082)";
-linearCoucherSoleil =
-  "linear-gradient(180deg, #0E0036 0%, #293254 13.02%, #ACBEFE 65.1%, rgba(198, 172, 254, 0.62) 81.25%, rgba(255, 166, 230, 0.55) 85.94%, rgba(250, 224, 130, 0.85) 96.35%)";
+// variables météos
 
-if (now > 8.5 && now < 16.5) {
-  document.body.style.backgroundColor = colorDay;
-} else if (now >= 8 && now <= 8.5) {
-  document.body.style.background = linearLeverSoleil;
-} else if (now >= 16.5 && now <= 17) {
-  document.body.style.background = linearCoucherSoleil;
-} else {
-  document.body.style.backgroundColor = colorNight;
-}
+  let urlMeteo =
+    "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto";
+  /* let now = new Date().getHours("fr-FR") */
+  let now = 8.2;
+  let intemperies = document.getElementById("intemperies");
+  let nowParsed = parseInt(now);
+  colorDay = "#acbefe";
+  colorNight = "#293254";
+  linearLeverSoleil =
+    "linear-gradient(180deg, #080060 0%, #89A3FF 44.79%, #FAE082)";
+  linearCoucherSoleil =
+    "linear-gradient(180deg, #0E0036 0%, #293254 13.02%, #ACBEFE 65.1%, rgba(198, 172, 254, 0.62) 81.25%, rgba(255, 166, 230, 0.55) 85.94%, rgba(250, 224, 130, 0.85) 96.35%)";
+
+// gestion du fond en fonction de l'heure de la journée 
+
+  if (now > 8.5 && now < 16.5) { // jour
+    document.body.style.backgroundColor = colorDay;
+  } else if (now >= 8 && now <= 8.5) { // lever du soleil
+    document.body.style.background = linearLeverSoleil ;
+  } else if (now >= 16.5 && now <= 17) { // coucher du soleil
+    document.body.style.background = linearCoucherSoleil;
+  } else {
+    document.body.style.backgroundColor = colorNight; // nuit
+  }
 
 function asynchrone() {
   fetch(urlMeteo)
@@ -892,7 +896,7 @@ function asynchrone() {
         return response.json();
       }
     })
-    .then(function (data) {
+    .then(function (data) { // affichage des pictos de la météo
       document.getElementById("temp").innerHTML =
         "Temperature actuelle : " +
         data.hourly.temperature_2m[nowParsed] +
