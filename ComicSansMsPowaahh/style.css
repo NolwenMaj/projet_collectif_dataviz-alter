@@ -1,3 +1,4 @@
+
  body{
     padding:0;
     margin:0;
@@ -12,24 +13,13 @@
     position: absolute;
     object-fit: cover;
   } 
-  .snowfall{
-    background-image: url("neige.png");
+   /* #snowfall{
+    background-image: url("neige.png" );
     min-height: 968px;
      background-size: 700px 400px; 
-   /*  background-repeat: repeat;
-    height: auto;
-    width: max-content ;*/
     animation:snowfall 5s linear forwards infinite; 
     -webkit-animation:snowfall 5s linear forwards infinite;  
-  }
-
-  .rainfall {
-    background-image: url("pluie.png");
-    min-height: 968px;
-    background-size: 700px 400px; 
-    animation:rainfall 5s linear forwards infinite; 
-    -webkit-animation:rainfall 5s linear forwards infinite;  
-  }
+  }  */ 
 
    @keyframes snowfall{
     0%{
@@ -52,6 +42,56 @@
     }
   }
   @-webkit-keyframes snowfall{
+    0%{
+      background-position: 0 0;
+    }
+    20%{
+      background-position: 20px 20px;
+    }
+    40%{
+      background-position: 40px 40px;
+    }
+    60%{
+      background-position: 60px 60px;
+    }
+    80%{
+      background-position: 80px 80px;
+    }
+    100%{
+      background-position: 100px 100px;
+    }
+  }
+
+/*   #rainfall {
+    background-image: url("rain-300x300.png");
+    min-height: 968px;
+    background-size: 500px 500px; 
+    animation:rainfall 0.5s linear infinite; 
+    -webkit-animation:rainfall 0.5s linear infinite;  
+  }  */
+
+  @keyframes rainfall{
+    0%{
+      background-position: 0 0;
+    }
+    20%{
+      background-position: 20px 20px;
+    }
+    40%{
+      background-position: 40px 40px;
+    }
+    60%{
+      background-position: 60px 60px;
+    }
+    80%{
+      background-position: 80px 80px;
+    }
+    100%{
+      background-position: 100px 100px;
+    }
+  }
+
+  @-webkit-keyframes rainfall{
     0%{
       background-position: 0 0;
     }
