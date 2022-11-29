@@ -811,7 +811,7 @@ let memeBase = {
 let oneLine = [];
 let twoLines = [];
 
-function memesSort(base) {
+function memesSort(base) { // sépare en deux tableaux les memes avec une image simple ou double
   for (i = 0; i < base.data.memes.length; i++) {
     if (base.data.memes[i].height >= base.data.memes[i].width) {
       twoLines.push(base.data.memes[i]);
@@ -823,11 +823,11 @@ function memesSort(base) {
 
 memesSort(memeBase);
 
-function getRandomArbitrary(min, max) {
+function getRandomArbitrary(min, max) { // prend un nombre entier au hasard entre deux valeurs
   return Math.random() * (max - min) + min;
 }
 
-function displayDoubleMeme(n) {
+function displayDoubleMeme(n) { // affiche le meme à l'index n du tableau twolines
   let imageMeme = document.createElement("img");
   imageMeme.src = twoLines[n].url;
   imageMeme.width = "300";
@@ -836,7 +836,7 @@ function displayDoubleMeme(n) {
   divJoke.appendChild(imageMeme);
 }
 
-getAMeme.onclick = () => {
+getAMeme.onclick = () => { // si clique, affiche un meme du tableau two lines d'un nombre random
   let n = parseInt(getRandomArbitrary(0, twoLines.length));
   displayDoubleMeme(n);
 };
@@ -845,37 +845,33 @@ getAMeme.onclick = () => {
 
 let urlJoke = "https://official-joke-api.appspot.com/jokes/programming/random";
 
-getAJoke.onclick = () => {
-  fetch(urlJoke)
-    .then(function (res) {
+getAJoke.onclick = () => { 
+  fetch(urlJoke) 
+    .then(function (res) { // ticket de caisse
       if (res.ok) {
         return res.json();
       }
     })
-    .then(function (value) {
-      document.getElementById("joke").innerHTML = value[0].setup;
-      document.getElementById("response").innerHTML = value[0].punchline;
+    .then(function (value) {  // produit
+      document.getElementById("joke").innerHTML = value[0].setup; // affiche le setup de la baque
+      document.getElementById("response").innerHTML = value[0].punchline; // affiche la chute de la blague
       return joke, response;
     })
-    .catch(function (err) {});
+    .catch(function (err) {}); // formulaire de réclamations
 };
 
 /* ----------------- API METEO -------------------------------------*/
 
 // variables météos
 
-  let urlMeteo =
-    "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto";
-  /* let now = new Date().getHours("fr-FR") */
-  let now = 8.2;
-  let intemperies = document.getElementById("intemperies");
-  let nowParsed = parseInt(now);
-  colorDay = "#acbefe";
-  colorNight = "#293254";
-  linearLeverSoleil =
-    "linear-gradient(180deg, #080060 0%, #89A3FF 44.79%, #FAE082)";
-  linearCoucherSoleil =
-    "linear-gradient(180deg, #0E0036 0%, #293254 13.02%, #ACBEFE 65.1%, rgba(198, 172, 254, 0.62) 81.25%, rgba(255, 166, 230, 0.55) 85.94%, rgba(250, 224, 130, 0.85) 96.35%)";
+  let urlMeteo = "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto";
+  const now = 14 // new Date().getHours("fr-FR")  
+  const intemperies = document.getElementById("intemperies");
+  const nowParsed = parseInt(now);
+  const colorDay = "#acbefe";
+  const colorNight = "#293254";
+  const linearLeverSoleil ="linear-gradient(180deg, #080060 0%, #89A3FF 44.79%, #FAE082)";
+  const linearCoucherSoleil ="linear-gradient(180deg, #0E0036 0%, #293254 13.02%, #ACBEFE 65.1%, rgba(198, 172, 254, 0.62) 81.25%, rgba(255, 166, 230, 0.55) 85.94%, rgba(250, 224, 130, 0.85) 96.35%)";
 
 // gestion du fond en fonction de l'heure de la journée 
 
@@ -889,6 +885,9 @@ getAJoke.onclick = () => {
     document.body.style.backgroundColor = colorNight; // nuit
   }
 
+
+// gestion des pictos, des temperatures et des fonds d'intempéries
+
 function asynchrone() {
   fetch(urlMeteo)
     .then(function (response) {
@@ -896,18 +895,16 @@ function asynchrone() {
         return response.json();
       }
     })
-    .then(function (data) { // affichage des pictos de la météo
-      document.getElementById("temp").innerHTML =
-        "Temperature actuelle : " +
-        data.hourly.temperature_2m[nowParsed] +
-        " °C";
-      document.getElementById("min").innerHTML =
-        "Minimale : " + data.daily.temperature_2m_min[0] + " °C";
-      document.getElementById("max").innerHTML =
-        "Maximale : " + data.daily.temperature_2m_max[0] + " °C";
-      let symbole = document.createElement("img");
-      let codeWeather = 1;
-      /* let codeWeather = data.current_weather.weathercode  */ // variable qui fait changer le picto de la méteo
+    .then(function (data) { 
+      // affichage des temperatures
+      document.getElementById("temp").innerHTML = "Temperature actuelle : " + data.hourly.temperature_2m[nowParsed] + " °C";
+      document.getElementById("min").innerHTML =  "Minimale : " + data.daily.temperature_2m_min[0] + " °C";
+      document.getElementById("max").innerHTML = "Maximale : " + data.daily.temperature_2m_max[0] + " °C";
+        
+      // affichage des pictos et fonds intempéries 
+      const symbole = document.createElement("img");
+      const codeWeather = 2; // let codeWeather = data.current_weather.weathercode // variable qui fait changer le picto de la méteo
+         
       if (nowParsed > 8 && nowParsed < 17) {
         switch (codeWeather) {
           case 0: // sunny
@@ -919,14 +916,14 @@ function asynchrone() {
           case 2: // white cloud
             symbole.src = "mm_api_symbols/wsymbol_0003_white_cloud.png";
             intemperies.style.backgroundImage = "url('white-big-cloud.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundRepeat = "no-repeat";
             intemperies.style.backgroundSize = "auto";
             break;
           case 3: // mostly cloudy
             symbole.src = "mm_api_symbols/wsymbol_0043_mostly_cloudy.png";
             intemperies.style.backgroundImage = "url('clouds.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "auto";
             break;
           case 45:
@@ -937,7 +934,7 @@ function asynchrone() {
           case 61: // light rain //
             symbole.src = "mm_api_symbols/wsymbol_0009_light_rain_showers.png";
             intemperies.style.backgroundImage = "url('rain-300x300.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "500px 500px ";
             intemperies.style.animation = "rainfall 0.5s linear infinite";
             intemperies.style.webkitAnimation = "rainfall 0.5s linear infinite";
@@ -948,7 +945,7 @@ function asynchrone() {
             symbole.src =
               "mm_api_symbols/wsymbol_0018_cloudy_with_heavy_rain.png";
             intemperies.style.backgroundImage = "url('rain-300x300.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "1000px 1000px ";
             intemperies.style.animation = "rainfall 4s linear infinite";
             intemperies.style.webkitAnimation = "rainfall 4s linear infinite";
@@ -956,23 +953,19 @@ function asynchrone() {
           case 71: // light snow //
             symbole.src = "mm_api_symbols/wsymbol_0011_light_snow_showers.png";
             intemperies.style.backgroundImage = "url('neige.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "350px 200px ";
-            intemperies.style.animation =
-              "snowfall 4s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 4s linear forwards infinite";
+            intemperies.style.animation = "snowfall 4s linear forwards infinite";
+            intemperies.style.webkitAnimation = "snowfall 4s linear forwards infinite"; 
             break;
           case 86: // heavy snow //
             symbole.src =
               "mm_api_symbols/wsymbol_0020_cloudy_with_heavy_snow.png";
             intemperies.style.backgroundImage = "url('neige.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "700px 400px ";
-            intemperies.style.animation =
-              "snowfall 1s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 1s linear forwards infinite";
+            intemperies.style.animation = "snowfall 1s linear forwards infinite"; 
+            intemperies.style.webkitAnimation = "snowfall 1s linear forwards infinite";
             break;
           case 95:
           case 96:
@@ -1001,14 +994,14 @@ function asynchrone() {
           case 1:
             symbole.src = "mm_api_symbols/wsymbol_0041_partly_cloudy_night.png";
             intemperies.style.backgroundImage = "url('white-big-cloud.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundRepeat = "no-repeat";
             intemperies.style.backgroundSize = "auto";
             break;
           case 2:
             symbole.src = "mm_api_symbols/wsymbol_0044_mostly_cloudy_night.png";
             intemperies.style.backgroundImage = "url('white-big-cloud.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundRepeat = "no-repeat";
             intemperies.style.backgroundSize = "auto";
             break;
@@ -1018,14 +1011,14 @@ function asynchrone() {
           case 3:
             symbole.src = "mm_api_symbols/wsymbol_0042_cloudy_night.png";
             intemperies.style.backgroundImage = "url('clouds.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "auto";
             break;
           case 61:
             symbole.src =
               "mm_api_symbols/wsymbol_0025_light_rain_showers_night.png";
             intemperies.style.backgroundImage = "url('rain-300x300.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "500px 500px ";
             intemperies.style.animation = "rainfall 0.5s linear infinite";
             intemperies.style.webkitAnimation = "rainfall 0.5s linear infinite";
@@ -1034,29 +1027,23 @@ function asynchrone() {
             symbole.src =
               "mm_api_symbols/wsymbol_0027_light_snow_showers_night.png";
             intemperies.style.backgroundImage = "url('neige.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "350px 200px ";
-            intemperies.style.animation =
-              "snowfall 4s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 4s linear forwards infinite";
+            intemperies.style.animation ="snowfall 4s linear forwards infinite";
+            intemperies.style.webkitAnimation = "snowfall 4s linear forwards infinite";
             break;
           case 80:
           case 81:
           case 82:
-            symbole.src =
-              "mm_api_symbols/wsymbol_0034_cloudy_with_heavy_rain_night.png";
+            symbole.src =  "mm_api_symbols/wsymbol_0034_cloudy_with_heavy_rain_night.png";
             break;
           case 86:
-            symbole.src =
-              "mm_api_symbols/wsymbol_0036_cloudy_with_heavy_snow_night.png";
+            symbole.src = "mm_api_symbols/wsymbol_0036_cloudy_with_heavy_snow_night.png";
             intemperies.style.backgroundImage = "url('neige.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "700px 400px ";
-            intemperies.style.animation =
-              "snowfall 1s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 1s linear forwards infinite";
+            intemperies.style.animation = "snowfall 1s linear forwards infinite";
+            intemperies.style.webkitAnimation = "snowfall 1s linear forwards infinite";  
             break;
           case 45:
             symbole.src = "mm_api_symbols/wsymbol_0063_mist_night.png";
@@ -1075,12 +1062,10 @@ function asynchrone() {
             symbole.src =
               "mm_api_symbols/wsymbol_0037_cloudy_with_sleet_night.png";
             intemperies.style.backgroundImage = "url('neige.png')";
-            intemperies.style.minHeight = "968px";
+            intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "350px 200px ";
-            intemperies.style.animation =
-              "snowfall 4s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 4s linear forwards infinite";
+            intemperies.style.animation = "snowfall 4s linear forwards infinite";
+            intemperies.style.webkitAnimation = "snowfall 4s linear forwards infinite";
             break;
           case 75:
             symbole.src = "mm_api_symbols/wsymbol_0029_sleet_showers_night.png";
@@ -1290,7 +1275,7 @@ fetch(urlNews)
   .then(function (data) { ... INSERER ICI LA FONCTION FOR ... } 
   */
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 3; i++) { // pour prendre uniquements les trois derniers articles parus
   title = data.results[i].title;
   description = data.results[i].description;
   liensNews = data.results[i].link;
@@ -1300,58 +1285,46 @@ for (var i = 0; i < 3; i++) {
 }
 
 function generate_table() {
-  // désigne l'endroit (body) où sera inséré le tableau
-  var body = document.getElementById("news");
-
-  // crée un élément <table> et un élément tblBody, qui est le contenu du tableau
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
-
-  // crée une colonne qui s'étend sur 3 lignes (rowSpan)
-  var column = document.createElement("td");
+  
+  var body = document.getElementById("news"); // désigne l'endroit (body) où sera inséré le tableau
+  var tbl = document.createElement("table");// crée un élément <table> et un élément tblBody, qui est le contenu du tableau
+    var tblBody = document.createElement("tbody");
+  var column = document.createElement("td");// crée une colonne qui s'étend sur 3 lignes (rowSpan)
   column.rowSpan = "3";
 
-  // création de l'élément image
-  img = document.createElement("IMG");
-  if (data.results[i].image_url == null) {
-    img.src =
-      "https://soniseo.com/wp-content/uploads/2017/05/technology-news-sites.jpg";
-  } else {
-    img.src = data.results[i].image_url;
-  }
-  img.style.width = "100px";
-  img.style.height = "auto";
-  img.setAttribute("id", "imagesNews");
+  
+  img = document.createElement("IMG"); // création de l'élément image
+    if (data.results[i].image_url == null) {
+      img.src =
+        "https://soniseo.com/wp-content/uploads/2017/05/technology-news-sites.jpg";
+    } else {
+      img.src = data.results[i].image_url;
+    }
+    img.style.width = "100px";
+    img.style.height = "auto";
+    img.setAttribute("id", "imagesNews");
 
-  // ajout de l'image à l'élément parent colonne
-  column.appendChild(img);
-
-  // ajout de la colonne à l'élément parent "contenu du tableau" (tblBody)
-  tblBody.appendChild(column);
-
-  // création d'une ligne et de son contenu (rowText)
-  var row = document.createElement("tr");
-  var rowText = document.createTextNode(title);
-
-  // ajout du contenu à l'élément parent ligne (row)
-  row.appendChild(rowText);
+  column.appendChild(img); // ajout de l'image à l'élément parent colonne
+  tblBody.appendChild(column);// ajout de la colonne à l'élément parent "contenu du tableau" (tblBody)
+  
+  var row = document.createElement("tr");// création d'une ligne et de son contenu (rowText)
+    var rowText = document.createTextNode(title);
+  row.appendChild(rowText);// ajout du contenu à l'élément parent ligne (row)
   row.setAttribute("id", "titleArticle");
 
-  // attribue le lien à cliquer à la news
-  row.onclick = () => {
+  
+  row.onclick = () => { // attribue le lien à cliquer à la news
     window.open(liensNews, "_blank");
   };
 
-  // création d'une deuxième ligne et de son contenu
-  var row2 = document.createElement("tr");
+  
+  var row2 = document.createElement("tr"); // création d'une deuxième ligne et de son contenu
   var row2text = document.createTextNode(description);
 
-  // ajout du contenu à l'élément parent ligne2 (row2)
-  row2.appendChild(row2text);
-  row2.setAttribute("id", "descriptionArticle");
-
-  // ajout de la ligne 2 à l'élément parent ligne 1 (row)
-  row.append(row2);
+  row2.appendChild(row2text);// ajout du contenu à l'élément parent ligne2 (row2)
+  row2.setAttribute("id", "descriptionArticle"); // ajout d'un id pour la gestion du style
+  
+  row.append(row2);// ajout de la ligne 2 à l'élément parent ligne 1 (row)
 
   // code non utilisé : création d'une ligne 3 pour afficher le lien de la news
   /* var row3 = document.createElement("tr");
@@ -1360,12 +1333,7 @@ function generate_table() {
     row3.setAttribute("border", "2");
     row.append(row3);  */
 
-  // ajout des lignes (élément parent row) au contenu du tableau (élément parent tblBody)
-  tblBody.appendChild(row);
-
-  // ajout du contenu du tableau au tableau
-  tbl.appendChild(tblBody);
-
-  // ajout du tableau à l'élément HTML "news"
-  body.appendChild(tbl);
+  tblBody.appendChild(row); // ajout des lignes (élément parent row) au contenu du tableau (élément parent tblBody)
+  tbl.appendChild(tblBody); // ajout du contenu du tableau au tableau
+  body.appendChild(tbl); // ajout du tableau à l'élément HTML "news"
 }

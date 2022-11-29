@@ -1,24 +1,165 @@
+/*  ---------------------Gestion globale----------------------- */
+ 
  body {
    padding: 0;
    margin: 0;
    min-height: 130vh;
- }
 
+ }
   .container{
     height: 100%;
     width: 100%;
-    min-height: 968px;
+    min-height: 130vh;
     min-width: 1024px;
     position: absolute;
     object-fit: cover;
   } 
-   /* #snowfall{
-    background-image: url("neige.png" );
-    min-height: 968px;
-     background-size: 700px 400px; 
-    animation:snowfall 5s linear forwards infinite; 
-    -webkit-animation:snowfall 5s linear forwards infinite;  
-  }  */ 
+
+  h2 {
+    font-family: 'Advent pro', sans-serif;
+    font-weight: 200;
+    color: #000000;
+    font-size: 2em;
+    text-align: center;
+  }
+ 
+  p {
+    font-family: 'Advent pro', sans-serif;
+    font-weight: 100;
+    color: #000000;
+    font-size: 1em;
+    text-align: center;
+  }
+
+  #parent {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .innerParent {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1%;
+  }
+ 
+  .divSpaceAround {
+    justify-items: space-around;
+    justify-content: space-around;
+    align-items: center;
+  }
+ 
+  #divCenter {
+    justify-items: center;
+    justify-content: center;
+  }
+/*  ---------------------Gestion titre ----------------------- */
+  #entete {
+    height: 150px;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Advent pro', sans-serif;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    animation: arrive-gauche-bonds 1s ease-in-out forwards;
+    /*animation: texte-clignotant;*/
+    padding: 50px;
+  }
+
+  @keyframes arrive-gauche-bonds {
+    0% {
+      transform: translateX(-50%) translateY(-80%);
+    }
+
+    10% {
+      transform: translateX(-45%) translateY(-100%);
+    }
+
+    20% {
+      transform: translateX(-38%) translateY(-36%);
+    }
+
+    30% {
+      transform: translateX(-35%) translateY(0%);
+    }
+
+    40% {
+      transform: translateX(-30%) translateY(-20%);
+    }
+
+    50% {
+      transform: translateX(-25%) translateY(-24%);
+    }
+
+    60% {
+      transform: translateX(-20%) translateY(0%);
+    }
+
+    70% {
+      transform: translateX(-15%) translateY(-10%);
+    }
+
+    80% {
+      transform: translateX(-10%) translateY(0%);
+    }
+
+    90% {
+      transform: translateX(-5%) translateY(-10%);
+    }
+
+    100% {
+      transform: translateX(0px) translateY(-5%);
+    }
+  }
+
+  @keyframes texte-clignotant{
+  0% {
+    color: rgb(111, 41, 161)
+  }
+  30% {
+    color:rgb(22, 180, 192)
+  }
+  60% {
+    color:rgb(192, 22, 76)
+  }
+
+  }
+
+  @keyframes arrive-droite {
+    0% {
+      transform: translateX(+90%);
+      width: 100%;
+      opacity: 0.5;
+    }
+  
+    80% {
+      transform: translateX(-40%);
+      width: 40%;
+      opacity: 1;
+    }
+  
+    90%{
+     transform: translateX(0%);
+     width: 60%;
+     opacity: 1;
+    }
+  
+    100% {
+      transform: translateX(0%);
+      width: 60%;
+      opacity: 1;
+    }
+  }
+  
+   /* ---------------------Gestion fonds intempéries ------------------ */
 
  @keyframes snowfall {
    0% {
@@ -72,85 +213,6 @@
    }
  }
 
- #entete {
-   height: 150px;
-   text-align: center;
-
- }
-
- h1 {
-   animation: arrive-gauche-bonds 1s ease-in-out forwards;
-   /*animation: texte-clignotant;*/
-   padding: 50px;
- }
-
- @keyframes arrive-gauche-bonds {
-   0% {
-     transform: translateX(-50%) translateY(-80%);
-   }
-
-   10% {
-     transform: translateX(-45%) translateY(-100%);
-   }
-
-   20% {
-     transform: translateX(-38%) translateY(-36%);
-   }
-
-   30% {
-     transform: translateX(-35%) translateY(0%);
-   }
-
-   40% {
-     transform: translateX(-30%) translateY(-20%);
-   }
-
-   50% {
-     transform: translateX(-25%) translateY(-24%);
-   }
-
-   60% {
-     transform: translateX(-20%) translateY(0%);
-   }
-
-   70% {
-     transform: translateX(-15%) translateY(-10%);
-   }
-
-   80% {
-     transform: translateX(-10%) translateY(0%);
-   }
-
-   90% {
-     transform: translateX(-5%) translateY(-10%);
-   }
-
-   100% {
-     transform: translateX(0px) translateY(-5%);
-   }
- }
-
- @keyframes texte-clignotant{
-  0% {
-    color: rgb(111, 41, 161)
-  }
-  30% {
-    color:rgb(22, 180, 192)
-  }
-  60% {
-    color:rgb(192, 22, 76)
-  }
-
- }
-
-/*   #rainfall {
-    background-image: url("rain-300x300.png");
-    min-height: 968px;
-    background-size: 500px 500px; 
-    animation:rainfall 0.5s linear infinite; 
-    -webkit-animation:rainfall 0.5s linear infinite;  
-  }  */
-
   @keyframes rainfall{
     0%{
       background-position: 0 0;
@@ -193,98 +255,117 @@
     }
   }
 
- #parent {
-   width: 100%;
-   height: 100%;
-   align-items: center;
-   align-content: center;
-   display: flex;
-   flex-direction: column;
- }
 
- .innerParent {
-   width: 60%;
-   display: flex;
-   flex-direction: row;
-   margin-bottom: 1%;
- }
+   /* ---------------------Gestion News------------------ */
+  
+  #imagesNews {
+    padding-right: 20px;
+  }
 
- .innerParentColumn {
-   width: 60%;
-   background-color: #ffffff4a;
-   padding-left: 5%;
-   padding-right: 5%;
-   padding-top: 2%;
-   padding-bottom: 2%;
-   border-radius: 20px;
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 2%;
-   margin-top: 2%;
-   opacity: 0%;
-   /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
-   animation: arrive-droite 1s 1s ease-out forwards
-     /*timing-function delay iteration-count direction fill-mode*/
-   ;
- }
+  #titleArticle {
+    font-weight: bold;
+    font-family: 'Advent pro', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+  }
 
- @keyframes arrive-droite {
-   0% {
-     transform: translateX(+90%);
-     width: 100%;
-     opacity: 0.5;
-   }
+  #titleArticle:hover {
+    color: white;
+    cursor: pointer;
+  }
+ 
+  #descriptionArticle {
+    font-weight: 200;
+    font-family: 'Advent pro', sans-serif;
+    font-size: 1em;
+    text-align: left;
+    color: #000000;
+  }
 
-   80% {
-     transform: translateX(-40%);
-     width: 40%;
-     opacity: 1;
-   }
-
-   90%{
-    transform: translateX(0%);
+  .innerParentColumn {
     width: 60%;
-    opacity: 1;
-   }
+    background-color: #ffffff4a;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    opacity: 0%;
+    /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+    animation: arrive-droite 1s 1s ease-out forwards ;
+    /*timing-function delay iteration-count direction fill-mode*/
+  }
 
-   100% {
-     transform: translateX(0%);
-     width: 60%;
-     opacity: 1;
-   }
- }
 
- #titleArticle {
-   font-weight: bold;
-   font-family: 'Advent pro', sans-serif;
-   font-size: 1em;
-   text-align: center;
- }
+/* ---------------------Gestion Boutons------------------ */
 
- #imagesNews {
-   padding-right: 20px;
- }
+.buttons {
+  text-transform: uppercase;
+  font-family: 'Advent pro', sans-serif;
+  text-decoration: none;
+  font-weight: 700;
+  border: 0;
+  position: relative;
+  letter-spacing: 0.16em;
+  margin: 0 auto;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  outline: none;
+  font-size: 28px;
+  color: white;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.15s;
+}
+.buttons:after, .buttons:before {
+  border: 0;
+  content: "";
+  position: absolute;
+  height: 40%;
+  width: 10%;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: -2;
+  border-radius: 50%;
+}
 
- #descriptionArticle {
-   font-weight: 200;
-   font-family: 'Advent pro', sans-serif;
-   font-size: 1em;
-   text-align: left;
-   color: #000000;
- }
+.buttons:before {
+  border: 0;
+  background-color: #FFA6E6;
+  top: -0.75rem;
+  left: 0.5rem;
+  -webkit-animation: topAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s infinite alternate;
+          animation: topAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s infinite alternate;
+}
+.buttons:after {
+  background-color: #FAE082;
+  top: 3rem;
+  left: 13rem;
+  -webkit-animation: bottomAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s infinite alternate;
+          animation: bottomAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s infinite alternate;
+}
 
- #divButtons {
-   justify-items: space-around;
-   justify-content: space-around;
-   align-items: center;
- }
+.buttons:hover {
+  cursor: pointer;
+}
+.buttons:hover::before, .buttons:hover::after {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  -webkit-animation: none;
+          animation: none;
+}
+.buttons:hover::after {
+  left: 0rem;
+}
+.buttons:hover::before {
+  top: 0.5rem;
+  left: 0.35rem;
+}
 
- #divDisplay {
-   justify-items: center;
-   justify-content: center;
- }
-
- @-webkit-keyframes topAnimation {
+@-webkit-keyframes topAnimation {
   from {
     transform: translate(0rem, 0);
   }
@@ -317,123 +398,46 @@
     transform: translate(0rem, 0);
   }
 } 
+
+/* ---------------------Gestion partie météo ------------------ */
+
+  .temperatures {
+    font-family: 'Advent pro', sans-serif;
+    font-weight: 200;
+    color: #ffffff;
+    font-size: 1.5em;
+    text-align: center;
+  }
+/* ---------------------Gestion Meme + Jokes------------------ */
  
- .buttons {
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: 700;
-    border: 0;
-    position: relative;
-    letter-spacing: 0.16em;
-    margin: 0 auto;
-    padding: 1rem 2.5rem;
-    background: transparent;
-    outline: none;
-    font-size: 28px;
-    color: white;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.15s;
+  #blague {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: white;
+    padding: 1%;
+    object-fit: contain;
   }
-  .buttons:after, .buttons:before {
-    border: 0;
-    content: "";
-    position: absolute;
-    height: 40%;
-    width: 10%;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    z-index: -2;
-    border-radius: 50%;
+ 
+  #meme {
+    max-width: 300px;
+    object-fit: contain;
   }
 
-  .buttons:before {
-    border: 0;
-    background-color: #FFA6E6;
-    top: -0.75rem;
-    left: 0.5rem;
-    -webkit-animation: topAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s infinite alternate;
-            animation: topAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s infinite alternate;
-  }
-  .buttons:after {
-    background-color: #FAE082;
-    top: 3rem;
-    left: 13rem;
-    -webkit-animation: bottomAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s infinite alternate;
-            animation: bottomAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s infinite alternate;
-  }
-  
-  .buttons :hover {
-    color: white;
-  }
-  .buttons:hover::before, .buttons:hover::after {
-    top: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: 0;
-    -webkit-animation: none;
-            animation: none;
-  }
-  .buttons:hover::after {
-    left: 0rem;
-  }
-  .buttons:hover::before {
-    top: 0.5rem;
-    left: 0.35rem;
-  }
+/* ----------------------- OLD -------------------------- */
 
- #blague {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
-   background-color: white;
-   padding: 1%;
-   object-fit: contain;
- }
+   /* #snowfall{
+    background-image: url("neige.png" );
+    min-height: 968px;
+     background-size: 700px 400px; 
+    animation:snowfall 5s linear forwards infinite; 
+    -webkit-animation:snowfall 5s linear forwards infinite;  
+  }  */ 
 
- #meme {
-   max-width: 300px;
-   object-fit: contain;
- }
-
- h1 {
-   font-family: 'Advent pro', sans-serif;
-   color: #ffffff;
-   font-weight: bold;
-   font-size: 3em;
-   text-align: center;
-   margin-top: 5%;
- }
-
- h2 {
-   font-family: 'Advent pro', sans-serif;
-   font-weight: 200;
-   color: #000000;
-   font-size: 2em;
-   text-align: center;
- }
-
- p {
-   font-family: 'Advent pro', sans-serif;
-   font-weight: 100;
-   color: #000000;
-   font-size: 1em;
-   text-align: center;
- }
-
- .buttons:hover {
-   font-weight: bold;
-   color: #89A3FF;
-   cursor: pointer;
- }
-
- #titleArticle:hover {
-   font-weight: thin;
-   color: #FFA6E6 ;
-   cursor: pointer;
- }
-
- .temperatures {
-  font-family: 'Advent pro', sans-serif;
-  font-weight: 200;
-  color: #ffffff;
-  font-size: 1.5em;
-  text-align: center;
-}
+/*   #rainfall {
+    background-image: url("rain-300x300.png");
+    min-height: 968px;
+    background-size: 500px 500px; 
+    animation:rainfall 0.5s linear infinite; 
+    -webkit-animation:rainfall 0.5s linear infinite;  
+  }  */
