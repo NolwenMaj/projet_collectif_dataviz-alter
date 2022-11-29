@@ -898,25 +898,28 @@ function asynchrone(){
     document.getElementById("min").innerHTML = "Minimale : "+ data.daily.temperature_2m_min[0]+ " °C";
     document.getElementById("max").innerHTML = "Maximale : "+ data.daily.temperature_2m_max[0] + " °C";
     let symbole = document.createElement("img");
-    let codeWeather = 1
+    let codeWeather = 61
     /* let codeWeather = data.current_weather.weathercode  */ // variable qui fait changer le picto de la méteo 
     if (nowParsed>8 && nowParsed<17 ){
       switch (codeWeather) {
-        case 0 :
+        case 0 : // sunny
           symbole.src ="/Jokes/mm_api_symbols/wsymbol_0001_sunny.png"
         break ;
-        case 1 :
+        case 1 : // mainly sunny
           symbole.src="/Jokes/mm_api_symbols/wsymbol_0002_sunny_intervals.png"
         break
-        case 2 :
+        case 2 : // white cloud
           symbole.src="/Jokes/mm_api_symbols/wsymbol_0003_white_cloud.png" 
           intemperies.style.backgroundImage = "url('white-big-cloud.png')";
           intemperies.style.minHeight = "968px";
           intemperies.style.backgroundRepeat = "no-repeat";
           intemperies.style.backgroundSize = "auto";
         break ;
-        case 3 :
+        case 3 : // mostly cloudy
           symbole.src="/Jokes/mm_api_symbols/wsymbol_0043_mostly_cloudy.png" 
+          intemperies.style.backgroundImage = "url('clouds.png')";
+          intemperies.style.minHeight = "968px";
+          intemperies.style.backgroundSize = "auto";
         break;
         case 45 :  
           symbole.src="/Jokes/mm_api_symbols/wsymbol_0006_mist.png"
@@ -991,16 +994,24 @@ function asynchrone(){
         break;
       case 2: 
         symbole.src="/Jokes/mm_api_symbols/wsymbol_0044_mostly_cloudy_night.png" 
+          intemperies.style.backgroundImage = "url('white-big-cloud.png')";
+          intemperies.style.minHeight = "968px";
+          intemperies.style.backgroundRepeat = "no-repeat";
+          intemperies.style.backgroundSize = "auto";
       break;
       case 51 :
           symbole.src="/Jokes/mm_api_symbols/wsymbol_0066_drizzle_night.png" 
           break;
       case 3: 
         symbole.src="/Jokes/mm_api_symbols/wsymbol_0042_cloudy_night.png" 
+        intemperies.style.backgroundImage = "url('clouds.png')";
+        intemperies.style.minHeight = "968px";
+        intemperies.style.backgroundSize = "auto";
       break;
       case 61 : 
         symbole.src="/Jokes/mm_api_symbols/wsymbol_0025_light_rain_showers_night.png" ;
         intemperies.style.backgroundImage = "url('rain-300x300.png')";
+        intemperies.style.opacity ="50%"
         intemperies.style.minHeight = "968px";
         intemperies.style.backgroundSize = "500px 500px ";
         intemperies.style.animation="rainfall 0.5s linear infinite" ;
@@ -1069,6 +1080,7 @@ function asynchrone(){
   
   asynchrone()
   
+/* ---------------------- API NEWS -------- */
 
   const data = {
     status: "success",
@@ -1305,15 +1317,7 @@ function asynchrone(){
    /*  row.setAttribute("border", "2"); */
     row.append(row2);
 
-    /* var row3 = document.createElement("tr");
-    var row3text = document.createTextNode(link.link(link));
-    row3.appendChild(row3text);
-    row3.setAttribute("border", "2");
-    row.append(row3);  */
-   
-
-    // add the row to the end of the table body
-    tblBody.appendChild(row);
+    tblBody.appendChild(row); // add the row to the end of the table body
 
     // put the <tbody> in the <table>
     tbl.appendChild(tblBody);
