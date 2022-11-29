@@ -865,7 +865,7 @@ getAJoke.onclick = () => {
 
 let urlMeteo = "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto"
 /* let now = new Date().getHours("fr-FR") */  
-  let now = 18.2 ;  
+let now = 18.2 ;  
 let intemperies = document.getElementById("intemperies");
 let nowParsed=parseInt(now) 
 colorDay = "#acbefe" ;
@@ -898,7 +898,7 @@ function asynchrone(){
     document.getElementById("min").innerHTML = "Minimale : "+ data.daily.temperature_2m_min[0]+ " °C";
     document.getElementById("max").innerHTML = "Maximale : "+ data.daily.temperature_2m_max[0] + " °C";
     let symbole = document.createElement("img");
-    let codeWeather = 61
+    let codeWeather = 73
     /* let codeWeather = data.current_weather.weathercode  */ // variable qui fait changer le picto de la méteo 
     if (nowParsed>8 && nowParsed<17 ){
       switch (codeWeather) {
@@ -1011,7 +1011,6 @@ function asynchrone(){
       case 61 : 
         symbole.src="/Jokes/mm_api_symbols/wsymbol_0025_light_rain_showers_night.png" ;
         intemperies.style.backgroundImage = "url('rain-300x300.png')";
-        intemperies.style.opacity ="50%"
         intemperies.style.minHeight = "968px";
         intemperies.style.backgroundSize = "500px 500px ";
         intemperies.style.animation="rainfall 0.5s linear infinite" ;
@@ -1043,10 +1042,11 @@ function asynchrone(){
       break;
       case 48 : 
         symbole.src="/Jokes/mm_api_symbols/wsymbol_0064_fog_night.png" 
+        intemperies.style.opacity ="50%"
       break;
       case 95 :
       case 96 :
-      case 99 :
+      case 99 : //thunderstorme //
         symbole.src="/Jokes/mm_api_symbols/wsymbol_0040_thunderstorms_night.png"
       break;
       case 71 : // light snow //
