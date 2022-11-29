@@ -1,8 +1,70 @@
-    body{ 
-        min-height: 900px;
-        background: linear-gradient(180deg, #89A3FF 4.69%, #FFC9C9 31.25%, #FAE082 61.98%, #DFFFAA 100%) no-repeat;
-    } 
+body{
+    background-color: #240068;
+    padding:0;
+    margin:0;
+  }
+  .container{
+    height: 100%;
+    width: 100%;
+    min-height: 968px;
+    min-width: 1024px;
+/*     position: absolute; */
+    object-fit: cover;
+  } 
+  .snowfall{
+    background-image: url("neige.png");
+    min-height: 968px;
+     background-size: 700px 400px; 
+   /*  background-repeat: repeat;
+    height: auto;
+    width: max-content ;*/
+    animation:snowfall 5s linear forwards infinite; 
+    -webkit-animation:snowfall 5s linear forwards infinite;  
+  }
 
+   @keyframes snowfall{
+    0%{
+      background-position: 0 0;
+    }
+    20%{
+      background-position: 20px 20px;
+    }
+    40%{
+      background-position: 40px 40px;
+    }
+    60%{
+      background-position: 60px 60px;
+    }
+    80%{
+      background-position: 80px 80px;
+    }
+    100%{
+      background-position: 100px 100px;
+    }
+  }
+  @-webkit-keyframes snowfall{
+    0%{
+      background-position: 0 0;
+    }
+    20%{
+      background-position: 20px 20px;
+    }
+    40%{
+      background-position: 40px 40px;
+    }
+    60%{
+      background-position: 60px 60px;
+    }
+    80%{
+      background-position: 80px 80px;
+    }
+    100%{
+      background-position: 100px 100px;
+    }
+  }
+
+/* 
+  
     #parent {
         width:100% ;
         height :100% ;
@@ -37,8 +99,7 @@
         font-weight: bold; 
         font-family: 'Advent pro',sans-serif;
         font-size: 1em ;
-        text-align: center;  
-   /*      text-decoration:none; */ 
+        text-align: center;   
     }
 
     #imagesNews {
@@ -130,3 +191,4 @@
     }
 
 
+ */
