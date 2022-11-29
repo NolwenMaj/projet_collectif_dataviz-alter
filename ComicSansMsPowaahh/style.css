@@ -1,9 +1,8 @@
-
- body{
-    padding:0;
-    margin:0;
-   min-height:100vh;
-  } 
+ body {
+   padding: 0;
+   margin: 0;
+   min-height: 100vh;
+ }
 
   .container{
     height: 100%;
@@ -21,46 +20,114 @@
     -webkit-animation:snowfall 5s linear forwards infinite;  
   }  */ 
 
-   @keyframes snowfall{
-    0%{
-      background-position: 0 0;
-    }
-    20%{
-      background-position: 20px 20px;
-    }
-    40%{
-      background-position: 40px 40px;
-    }
-    60%{
-      background-position: 60px 60px;
-    }
-    80%{
-      background-position: 80px 80px;
-    }
-    100%{
-      background-position: 100px 100px;
-    }
-  }
-  @-webkit-keyframes snowfall{
-    0%{
-      background-position: 0 0;
-    }
-    20%{
-      background-position: 20px 20px;
-    }
-    40%{
-      background-position: 40px 40px;
-    }
-    60%{
-      background-position: 60px 60px;
-    }
-    80%{
-      background-position: 80px 80px;
-    }
-    100%{
-      background-position: 100px 100px;
-    }
-  }
+ @keyframes snowfall {
+   0% {
+     background-position: 0 0;
+   }
+
+   20% {
+     background-position: 20px 20px;
+   }
+
+   40% {
+     background-position: 40px 40px;
+   }
+
+   60% {
+     background-position: 60px 60px;
+   }
+
+   80% {
+     background-position: 80px 80px;
+   }
+
+   100% {
+     background-position: 100px 100px;
+   }
+ }
+
+ @-webkit-keyframes snowfall {
+   0% {
+     background-position: 0 0;
+   }
+
+   20% {
+     background-position: 20px 20px;
+   }
+
+   40% {
+     background-position: 40px 40px;
+   }
+
+   60% {
+     background-position: 60px 60px;
+   }
+
+   80% {
+     background-position: 80px 80px;
+   }
+
+   100% {
+     background-position: 100px 100px;
+   }
+ }
+
+ #entete {
+   height: 150px;
+   text-align: center;
+ }
+
+ h1 {
+   animation: arrive-gauche-bonds 1s ease-in-out forwards;
+   padding: 50px;
+ }
+
+ @keyframes arrive-gauche-bonds {
+   0% {
+     transform: translateX(-50%) translateY(+80%);
+   }
+
+   10% {
+     transform: translateX(-45%) translateY(+100%);
+   }
+
+   20% {
+     transform: translateX(-38%) translateY(+36%);
+   }
+
+   30% {
+     transform: translateX(-35%) translateY(0%);
+   }
+
+   40% {
+     transform: translateX(-30%) translateY(+20%);
+   }
+
+   50% {
+     transform: translateX(-25%) translateY(+24%);
+   }
+
+   60% {
+     transform: translateX(-20%) translateY(0%);
+   }
+
+   70% {
+     transform: translateX(-15%) translateY(+10%);
+   }
+
+   80% {
+     transform: translateX(-10%) translateY(0%);
+   }
+
+   90% {
+     transform: translateX(-5%) translateY(+10%);
+   }
+
+   100% {
+     transform: translateX(0px) translateY(+5%);
+   }
+
+ }
 
 /*   #rainfall {
     background-image: url("rain-300x300.png");
@@ -112,128 +179,158 @@
     }
   }
 
-  #parent {
-    width:100% ;
-    height :100% ;
-    align-items: center;
-    align-content: center; 
-    display: flex;
-    flex-direction: column;
-}
+ #parent {
+   width: 100%;
+   height: 100%;
+   align-items: center;
+   align-content: center;
+   display: flex;
+   flex-direction: column;
+ }
 
-.innerParent {
-    width:60% ;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1%;
-}
+ .innerParent {
+   width: 60%;
+   display: flex;
+   flex-direction: row;
+   margin-bottom: 1%;
+ }
 
-.innerParentColumn {
-    width:60% ;
-    background-color: #ffffff;
-    padding-left: 5% ;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2%;
-    margin-top: 2%;
-}
+ .innerParentColumn {
+   width: 60%;
+   background-color: #ffffff;
+   padding-left: 5%;
+   padding-right: 5%;
+   padding-top: 2%;
+   padding-bottom: 2%;
+   border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 2%;
+   margin-top: 2%;
+   opacity: 0%;
+   /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+   animation: arrive-droite 1s 1s ease-out forwards
+     /*timing-function delay iteration-count direction fill-mode*/
+   ;
+ }
 
-#titleArticle {
-    font-weight: bold; 
-    font-family: 'Advent pro',sans-serif;
-    font-size: 1em ;
-    text-align: center;   
-}
+ @keyframes arrive-droite {
+   0% {
+     transform: translateX(+90%);
+     width: 100%;
+     opacity: 0.5;
+   }
 
-#imagesNews {
-padding-right: 20px ;
-}
+   80% {
+     transform: translateX(-40%);
+     width: 40%;
+     opacity: 1;
+   }
 
-#descriptionArticle {
-    font-weight: 200;
-    font-family: 'Advent pro',sans-serif;
-    font-size: 1em ; 
-    text-align: left;
-    color: #000000;
-}
+   90%{
+    transform: translateX(0%);
+    width: 60%;
+    opacity: 1;
+   }
 
-#divButtons{
-    justify-items: space-around;
-    justify-content: space-around;
-    align-items: center;
-}
+   100% {
+     transform: translateX(0%);
+     width: 60%;
+     opacity: 1;
+   }
+ }
 
-#divDisplay{
-    justify-items: center;
-    justify-content: center; 
-}
+ #titleArticle {
+   font-weight: bold;
+   font-family: 'Advent pro', sans-serif;
+   font-size: 1em;
+   text-align: center;
+ }
 
-.buttons {
-    background-color: #ffffff;
-    border-radius: 10px;
-    width : fit-content ;
-    font-family: 'Advent pro',sans-serif;
-    font-weight: 100;
-    color:#000000;
-    font-size: 1em ;
-    text-align: center;
-    padding: 1%;
-    margin: 1%;
-}
+ #imagesNews {
+   padding-right: 20px;
+ }
 
-#blague{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: white;
-    padding: 1%;
-    object-fit: contain;
-}
+ #descriptionArticle {
+   font-weight: 200;
+   font-family: 'Advent pro', sans-serif;
+   font-size: 1em;
+   text-align: left;
+   color: #000000;
+ }
 
-#meme {
-    max-width: 300px;  
-    object-fit: contain;
-}
+ #divButtons {
+   justify-items: space-around;
+   justify-content: space-around;
+   align-items: center;
+ }
 
-h1{
-    font-family:'Advent pro',sans-serif;
-    color:#ffffff; 
-    font-weight: bold;
-    font-size: 3em;
-    text-align: center;
-    margin-top: 5%;
-}
+ #divDisplay {
+   justify-items: center;
+   justify-content: center;
+ }
 
-h2{
-    font-family: 'Advent pro',sans-serif;
-    font-weight: 200;
-    color:#000000;
-    font-size: 2em ;
-    text-align: center; 
-}    
+ .buttons {
+   background-color: #ffffff;
+   border-radius: 10px;
+   width: fit-content;
+   font-family: 'Advent pro', sans-serif;
+   font-weight: 100;
+   color: #000000;
+   font-size: 1em;
+   text-align: center;
+   padding: 1%;
+   margin: 1%;
+ }
 
-p{
-    font-family: 'Advent pro',sans-serif;
-    font-weight: 100;
-    color:#000000;
-    font-size: 1em ;
-    text-align: center; 
-}
+ #blague {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   background-color: white;
+   padding: 1%;
+   object-fit: contain;
+ }
 
-.buttons:hover{
-    font-weight : bold ;
-    color : #89A3FF;
-    cursor: pointer;
-}
+ #meme {
+   max-width: 300px;
+   object-fit: contain;
+ }
 
-#titleArticle:hover{
-    font-weight : thin;
-    color : #89A3FF;
-    cursor: pointer;
-    
-}
-  
+ h1 {
+   font-family: 'Advent pro', sans-serif;
+   color: #ffffff;
+   font-weight: bold;
+   font-size: 3em;
+   text-align: center;
+   margin-top: 5%;
+ }
+
+ h2 {
+   font-family: 'Advent pro', sans-serif;
+   font-weight: 200;
+   color: #000000;
+   font-size: 2em;
+   text-align: center;
+ }
+
+ p {
+   font-family: 'Advent pro', sans-serif;
+   font-weight: 100;
+   color: #000000;
+   font-size: 1em;
+   text-align: center;
+ }
+
+ .buttons:hover {
+   font-weight: bold;
+   color: #89A3FF;
+   cursor: pointer;
+ }
+
+ #titleArticle:hover {
+   font-weight: thin;
+   color: #89A3FF;
+   cursor: pointer;
+
+ }
