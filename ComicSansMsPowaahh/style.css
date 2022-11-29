@@ -87,10 +87,12 @@
  #entete {
    height: 150px;
    text-align: center;
+
  }
 
  h1 {
    animation: arrive-gauche-bonds 1s ease-in-out forwards;
+   /*animation: texte-clignotant;*/
    padding: 50px;
  }
 
@@ -138,8 +140,21 @@
    100% {
      transform: translateX(0px) translateY(+5%);
    }
+ }
+
+ @keyframes texte-clignotant{
+  0% {
+    color: rgb(111, 41, 161)
+  }
+  30% {
+    color:rgb(22, 180, 192)
+  }
+  60% {
+    color:rgb(192, 22, 76)
+  }
 
  }
+
 
  #parent {
    width: 100%;
