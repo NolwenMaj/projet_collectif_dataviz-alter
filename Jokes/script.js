@@ -1,4 +1,6 @@
-let memeBase = {
+ /*  ----------------------  MEMES  ----------------------*/
+
+  let memeBase = {
     success: true,
     data: {
       memes: [
@@ -805,7 +807,7 @@ let memeBase = {
       ],
     },
   };
-  
+
   let oneLine = [];
   let twoLines = [];
 
@@ -820,12 +822,6 @@ let memeBase = {
   }
   
 memesSort(memeBase);
-console.log(twoLines)
-
-let urlJoke = "https://official-joke-api.appspot.com/jokes/programming/random"
-let joke;
-let response;
-let urlMeme ="https://api.imgflip.com/get_memes"
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -840,6 +836,15 @@ divJoke.innerHTML = "";
 divJoke.appendChild(imageMeme); 
 }
 
+getAMeme.onclick =() =>{
+  let n =parseInt(getRandomArbitrary(0,twoLines.length))
+  displayDoubleMeme(n) 
+}
+
+/* ---------------- API BLAGUE ------------------------------ */
+
+let urlJoke = "https://official-joke-api.appspot.com/jokes/programming/random"
+                     
 getAJoke.onclick = () => {
     fetch(urlJoke)
         .then(function (res) {
@@ -848,19 +853,416 @@ getAJoke.onclick = () => {
         }
         })
         .then(function (value) {
-        joke = value[0].setup;
-        response = value[0].punchline;
         document.getElementById("joke").innerHTML = value[0].setup;
         document.getElementById("response").innerHTML = value[0].punchline;
         return joke, response;
         })
         .catch(function (err) {
-        }) ;
-    let n =parseInt(getRandomArbitrary(0,99))
-    displayDoubleMeme(n)   
+        }) ;  
 }
 
- 
+/* ----------------- API METEO -------------------------------------*/
+
+let urlMeteo = "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto"
+let now = new Date().getHours("fr-FR")
+now=parseInt(now)
+
+function asynchrone(){
+  fetch(urlMeteo)
+  .then(function (response) {
+    if (response.ok) {
+        return response.json();
+    }
+  })
+  .then(function (data) {
+    document.getElementById("temp").innerHTML = "Temperature actuelle : "+ data.hourly.temperature_2m[now] + " °C";
+    document.getElementById("min").innerHTML = "Minimale : "+ data.daily.temperature_2m_min[0]+ " °C";
+    document.getElementById("max").innerHTML = "Maximale : "+ data.daily.temperature_2m_max[0] + " °C";
+    let symbole = document.createElement("img");
+    if (now>8 && now<17 ){
+      switch (data.current_weather.weathercode) {
+        case 0 :
+          symbole.src ="/Jokes/mm_api_symbols/wsymbol_0001_sunny.png"
+        break ;
+        case 1 :
+          symbole.src="/Jokes/mm_api_symbols/wsymbol_0002_sunny_intervals.png"
+        break
+        case 2 :
+          symbole.src="/Jokes/mm_api_symbols/wsymbol_0003_white_cloud.png" 
+        break ;
+        case 3 :
+          symbole.src="/Jokes/mm_api_symbols/wsymbol_0043_mostly_cloudy.png" 
+        break;
+        case 45 :  
+          symbole.src="/Jokes/mm_api_symbols/wsymbol_0006_mist.png"
+        case 48 :
+          symbole.src="/Jokes/mm_api_symbols/wsymbol_0007_fog.png"
+        break;
+        case 61: 
+          symbole.src="/Jokes/mm_api_symbols/wsymbol_0009_light_rain_showers.png"
+        break;
+        case 80 : 
+        case 81 : 
+        case 82 : 
+          symbole.src="/Jokes/mm_api_symbols/wsymbol_0018_cloudy_with_heavy_rain.png" 
+        break;
+        case 71: 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0011_light_snow_showers.png"
+        break;
+        case 86: 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0020_cloudy_with_heavy_snow.png" 
+        break;
+        case 95 : 
+        case 96 : 
+        case 99 : 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0024_thunderstorms.png" 
+        break;
+        case 66 :
+        case 67 :
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0050_freezing_rain.png" 
+        break;
+        case 75: 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0013_sleet_showers.png" 
+        break;
+        case 71 : 
+        case 73 : 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0021_cloudy_with_sleet.png" 
+        break;
+        default :
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0999_unknown.png" 
+      }
+    }
+    else {
+      switch (data.current_weather.weathercode){
+      case 0: 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0008_clear_sky_night.png"
+      break;
+      case 1 :
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0041_partly_cloudy_night.png" 
+        break;
+      case 2: 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0044_mostly_cloudy_night.png" 
+      break;
+      case 51 :
+          symbole.src="/Jokes/mm_api_symbols/wsymbol_0066_drizzle_night.png" 
+          break;
+      case 3: 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0042_cloudy_night.png" 
+      break;
+      case 61 : 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0025_light_rain_showers_night.png" 
+      break;
+      case 85:  
+      symbole.src="/Jokes/mm_api_symbols/wsymbol_0027_light_snow_showers_night.png" 
+      break;
+      case 80 :
+      case 81 : 
+      case 82 : 
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0034_cloudy_with_heavy_rain_night.png"
+          break;
+      case 86 :
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0036_cloudy_with_heavy_snow_night.png" 
+      break;
+      case 45 :
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0063_mist_night.png" 
+        break;
+        case 48 : 
+      symbole.src="/Jokes/mm_api_symbols/wsymbol_0064_fog_night.png" 
+      break;
+      case 95 :
+      case 96 :
+      case 99 :
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0040_thunderstorms_night.png"
+      break;
+      case 71 : 
+      case 73 :  
+      symbole.src="/Jokes/mm_api_symbols/wsymbol_0037_cloudy_with_sleet_night.png" 
+      break;
+      case 75: 
+      symbole.src="/Jokes/mm_api_symbols/wsymbol_0029_sleet_showers_night.png" 
+      break;
+      case 66 :
+      case 67 :
+        symbole.src="/Jokes/mm_api_symbols/wsymbol_0068_freezing_rain_night.png" 
+      break;
+      default :
+      symbole.src="/Jokes/mm_api_symbols/wsymbol_0999_unknown.png"
+      }
+    }
+    let divWeather = document.getElementById("weatherIcone");
+    divWeather.innerHTML = "";
+    divWeather.appendChild(symbole); 
+  })
+  .catch(function(erreurs) {
+      }) ; 
+      
+  }
+  
+  asynchrone()
+  
+
+  const data = {
+    status: "success",
+    totalResults: 132,
+    results: [
+      {
+        title:
+          "Mercredi : la famille Addams est loin d’avoir dit son dernier mot",
+        link: "https://www.journaldugeek.com/2022/11/28/mercredi-la-famille-addams-est-loin-davoir-dit-son-dernier-mot/",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description:
+          "Les créateurs de Mercredi en ont encore beaucoup sous la main. Les choses vont-elles évoluer dans le bon sens pour l'adolescente ? Mercredi : la famille Addams est loin d’avoir dit son dernier mot",
+        content: null,
+        pubDate: "2022-11-28 13:30:57",
+        image_url: null,
+        source_id: "journaldugeek",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+      {
+        title:
+          "L’excellente souris Logitech MX Master 2S voit son prix divisé par 2 (-52%) !",
+        link: "https://www.journaldugeek.com/bon-plan/lexcellente-souris-logitech-mx-master-2s-voit-son-prix-divise-par-2-52/",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description:
+          'Profitez de 52% de réduction sur la souris Logitech MX Master 2S, un "must have" à ce prix-là ! L’excellente souris Logitech MX Master 2S voit son prix divisé par 2 (-52%) !',
+        content: null,
+        pubDate: "2022-11-28 13:17:05",
+        image_url: null,
+        source_id: "journaldugeek",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+      {
+        title:
+          "Les astronautes de l’ISS sont confinés à cause de leurs combinaisons",
+        link: "https://www.journaldugeek.com/2022/11/28/les-astronautes-de-liss-sont-confines-a-cause-de-leurs-combinaisons/",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description:
+          "Après les couacs de la NASA au début de l'année, c'est la Russie et Roscomos qui ont aujourd'hui des problèmes avec leurs combinaisons. Les astronautes de l’ISS sont confinés à cause de leurs combinaisons",
+        content: null,
+        pubDate: "2022-11-28 13:00:52",
+        image_url: null,
+        source_id: "journaldugeek",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+      {
+        title:
+          "Apple explique pourquoi les AirPods Pro ne supportent pas le LossLess",
+        link: "https://www.journaldugeek.com/2022/11/28/apple-explique-pourquoi-les-airpods-pro-ne-supportent-pas-le-lossless/",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description: `Apple n'a pas apporté sa technologie "LossLess" aux AirPods Pro 2. Mais selon un ingénieur de la Pomme, elle a une bonne raison. Apple explique pourquoi les AirPods Pro ne supportent pas le LossLess`,
+        content: null,
+        pubDate: "2022-11-28 12:30:28",
+        image_url: null,
+        source_id: "journaldugeek",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+      {
+        title: "Epic Games Store : le calendrier de l’avent bientôt de retour ?",
+        link: "https://www.journaldugeek.com/2022/11/28/epic-games-store-le-calendrier-de-lavent-bientot-de-retour/",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description:
+          "Cette année à Noël, les joueurs Pc vont être une nouvelle fois gâtés par Epic Games. Epic Games Store : le calendrier de l’avent bientôt de retour ?",
+        content: null,
+        pubDate: "2022-11-28 12:00:56",
+        image_url: null,
+        source_id: "journaldugeek",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+      {
+        title: "China's Covid protests lead to uncertainty on stock markets",
+        link: "https://www.france24.com/en/tv-shows/business-daily/20221128-china-s-covid-protests-lead-to-uncertainty-on-stock-markets",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description:
+          "Nationwide protests against China's zero-Covid policy have left investors concerned about the outlook for the country's economy. On Monday morning, both the Shanghai Composite and Hang Seng in Hong Kong were posting losses. The price of oil was also affected, on the assumption that Chinese demand for crude will be weaker. Also in this edition, we take a look at record online sales during Black Friday.",
+        content:
+          "/ Shows / Business Daily China's Covid protests lead to uncertainty on stock markets Issued on: 28/11/2022 - 12:46 Audio 05:04 05:04 BUSINESS DAILY © FRANCE 24 By: Charles PELLEGRIN Follow Nationwide protests against China's zero-Covid policy have left investors concerned about the outlook for the country's economy. On Monday morning, both the Shanghai Composite and Hang Seng in Hong Kong were posting losses. The price of oil was also affected, on the assumption that Chinese demand for crude will be weaker. Also in this edition, we take a look at record online sales during Black Friday. China Coronavirus (Covid-19) markets protest Related content In the press #WhitePaperRevolution: Chinese protesters seek to bypass censorship China attempts to curb, censor rare nationwide protests over Covid lockdowns Protests in Shanghai as anger mounts over China's 'zero-Covid' lockdown policy Previous shows 25/11/2022 Black Friday sales remain popular with French consumers 24/11/2022 EU energy ministers hold tense talks on Russian natural gas price cap 21/11/2022 With $220 billion price tag, Qatar hosts most expensive World Cup in history 17/11/2022 Elon Musk defends his $56 billion Tesla pay package",
+        pubDate: "2022-11-28 11:46:17",
+        image_url:
+          "https://s.france24.com/media/display/3de3012e-6efc-11ed-9936-005056a90284/w:1024/p:16x9/ECO%20CHINA%20PROTESTS%2006H%20-ROBERTSON%20Georgina-.jpg",
+        source_id: "france24",
+        country: [Array],
+        category: [Array],
+        language: "english",
+      },
+      {
+        title:
+          "Les robots policiers pourraient bientôt avoir leur permis de tuer",
+        link: "https://www.journaldugeek.com/2022/11/28/les-robots-policiers-pourraient-bientot-avoir-leur-permis-de-tuer/",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description:
+          "Les robots tueurs dans la police vont bientôt devenir une réalité. Les robots policiers pourraient bientôt avoir leur permis de tuer",
+        content: null,
+        pubDate: "2022-11-28 11:30:33",
+        image_url: null,
+        source_id: "journaldugeek",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+      {
+        title: "Vous ne reverrez plus jamais la Nvidia Shield TV à ce prix 😍",
+        link: "https://www.journaldugeek.com/bon-plan/vous-ne-reverrez-plus-jamais-la-nvidia-shield-tv-a-ce-prix/",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description:
+          "Si vous êtes à la recherche d’une box TV sous Android fonctionnelle et efficace, cette promotion pourrait vous plaire. La Nvidia Shield TV est actuellement disponible à 109 euros pour Black Friday, du jamais vu ! Vous ne reverrez plus jamais la Nvidia Shield TV à ce prix 😍",
+        content: null,
+        pubDate: "2022-11-28 11:15:00",
+        image_url: null,
+        source_id: "journaldugeek",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+      {
+        title: "Métavers: un an après l’euphorie, le retour sur terre",
+        link: "https://www.lefigaro.fr/secteur/high-tech/metavers-un-an-apres-l-euphorie-le-retour-sur-terre-20221127",
+        keywords: [Array],
+        creator: null,
+        video_url: null,
+        description:
+          "ENQUÊTE - L’emballement trop précoce des marques fait place à la prudence, alors que le terme métavers, «galvaudé», est désormais rejeté par des acteurs de la réalité virtuelle et augmentée.",
+        content: null,
+        pubDate: "2022-11-28 10:18:02",
+        image_url: null,
+        source_id: "lefigaro",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+      {
+        title:
+          "Cyber Monday : dernier jour pour profiter des promos tech qui valent vraiment le coup !",
+        link: "https://www.numerama.com/tech/1192864-cyber-monday-dernier-jour-pour-profiter-des-promos-tech-qui-valent-vraiment-le-coup.html",
+        keywords: [Array],
+        creator: [Array],
+        video_url: null,
+        description:
+          "Place au Cyber Monday. Après une semaine rythmée par les réductions sur Amazon, Fnac et compagnies, et de promotions sur les grandes marques comme Apple ou Samsung, la période du Black Friday se cloture par le Cyber Monday. C'est en pratique le dernier jour pour profiter encore d'offres sur de nombreux poduits tech.",
+        content:
+          "Place au Cyber Monday. Après une semaine rythmée par les réductions sur Amazon, Fnac et compagnies, et de promotions sur les grandes marques comme Apple ou Samsung, la période du Black Friday se cloture par le Cyber Monday. C'est en pratique le dernier jour pour profiter encore d'offres sur de nombreux poduits tech.  [Lire la suite]Abonnez-vous aux newsletters Numerama pour recevoir l’essentiel de l’actualité https://www.numerama.com/newsletter/",
+        pubDate: "2022-11-28 09:20:33",
+        image_url: null,
+        source_id: "numerama",
+        country: [Array],
+        category: [Array],
+        language: "french",
+      },
+    ],
+    nextPage: 1,
+  };
+
+  for (var i = 0; i < 3; i++) {
+    title = data.results[i].title;
+    description = data.results[i].description;
+    liensNews = data.results[i].link;
+    imgsrc = data.results[i].image_url;
+
+    generate_table();
+  }
+
+  function generate_table() {
+    // get the reference for the body
+    var body = document.getElementById("news");
+
+    // creates a <table> element and a <tbody> element
+    var tbl = document.createElement("table");
+    var tblBody = document.createElement("tbody");
+
+    //creates a column
+    var column = document.createElement("td");
+    column.rowSpan = "3";
+
+    // creation de l'element image
+    img = document.createElement("IMG");
+    if (data.results[i].image_url == null) {
+      img.src =
+        "https://soniseo.com/wp-content/uploads/2017/05/technology-news-sites.jpg";
+    } else {
+      img.src = data.results[i].image_url;
+    }
+    img.style.width = "100px";
+    img.style.height = "auto";
+    img.setAttribute('id','imagesNews')
+
+    // ajout au conteneur
+    column.appendChild(img);
+    //column.appendChild(columnContent);
+    tblBody.appendChild(column);
+
+
+    // creates a table row
+    var row = document.createElement("tr");
+    var rowText = document.createTextNode(title);
+    /* row.href = document.createTextNode(link.link(link)); */
+    row.appendChild(rowText);
+    row.setAttribute('id','titleArticle');
+    
+    row.onclick =() =>{
+      window.open(liensNews,'_blank');
+    }
+   
+    /* row.setAttribute("border", "2"); */
+
+    var row2 = document.createElement("tr");
+    var row2text = document.createTextNode(description);
+    row2.appendChild(row2text);
+    row2.setAttribute('id','descriptionArticle')
+   /*  row.setAttribute("border", "2"); */
+    row.append(row2);
+
+    /* var row3 = document.createElement("tr");
+    var row3text = document.createTextNode(link.link(link));
+    row3.appendChild(row3text);
+    row3.setAttribute("border", "2");
+    row.append(row3);  */
+   
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+
+    // put the <tbody> in the <table>
+    tbl.appendChild(tblBody);
+    // appends <table> into <body>
+    body.appendChild(tbl);
+    // sets the border attribute of tbl to 2;
+    /* tbl.setAttribute("border", "2"); */
+  }
+
+
+/* -------OLD STUFF */
+
+ /* case 74 :
+      symbole.src="/Jokes/mm_api_symbols/wsymbol_0074_dust_sand_night.png" 
+      break; */
+      /*  case 56 :
+      symbole.src="/Jokes/mm_api_symbols/wsymbol_0056_dust_sand.png" 
+      break; */
 
 
 
@@ -885,7 +1287,7 @@ getAJoke.onclick = () => {
             // Une erreur est survenue
         }) ; */
 
-
+/* let urlMeme ="https://api.imgflip.com/get_memes" */
 
 
     /* "https://apimeme.com/meme?meme=Hide-the-Pain-Harold&top=" +

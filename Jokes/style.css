@@ -1,6 +1,99 @@
+    body{ 
+        min-height: 900px;
+        background: linear-gradient(180deg, #89A3FF 4.69%, #FFC9C9 31.25%, #FAE082 61.98%, #DFFFAA 100%) no-repeat;
+    } 
+
+    #parent {
+        width:100% ;
+        height :100% ;
+        align-items: center;
+        align-content: center; 
+        display: flex;
+        flex-direction: column;
+    }
+
+    .innerParent {
+        width:60% ;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1%;
+    }
+
+    .innerParentColumn {
+        width:60% ;
+        background-color: #ffffff;
+        padding-left: 5% ;
+        padding-right: 5%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2%;
+        margin-top: 2%;
+    }
+
+    #titleArticle {
+        font-weight: bold; 
+        font-family: 'Advent pro',sans-serif;
+        font-size: 1em ;
+        text-align: center;  
+   /*      text-decoration:none; */ 
+    }
+
+    #imagesNews {
+    padding-right: 20px ;
+    }
+
+    #descriptionArticle {
+        font-weight: 200;
+        font-family: 'Advent pro',sans-serif;
+        font-size: 1em ; 
+        text-align: left;
+        color: #000000;
+    }
+
+    #divButtons{
+        justify-items: space-around;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #divDisplay{
+        justify-items: center;
+        justify-content: center; 
+    }
+
+    .buttons {
+        background-color: #ffffff;
+        border-radius: 10px;
+        width : fit-content ;
+        font-family: 'Advent pro',sans-serif;
+        font-weight: 100;
+        color:#000000;
+        font-size: 1em ;
+        text-align: center;
+        padding: 1%;
+        margin: 1%;
+    }
+   
+    #blague{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: white;
+        padding: 1%;
+        object-fit: contain;
+    }
+
+    #meme {
+        max-width: 300px;  
+        object-fit: contain;
+    }
+
     h1{
         font-family:'Advent pro',sans-serif;
-        color:#8800ff; 
+        color:#ffffff; 
         font-weight: bold;
         font-size: 3em;
         text-align: center;
@@ -15,81 +108,25 @@
         text-align: center; 
     }    
 
-  /*   h3{
-        font-family: 'Advent pro',sans-serif;
-        font-weight: 200;
-        color:#000000;
-        font-size: 2em ;
-        text-align: center; 
-         opacity: 0%; 
-    }   */
-
     p{
         font-family: 'Advent pro',sans-serif;
-        font-style: italic;
         font-weight: 100;
         color:#000000;
         font-size: 1em ;
         text-align: center; 
     }
 
-    #background{ 
-        height: 100%;
-        width: 100%;
-        min-height: 968px;
-        background-size: cover ;  
-        background: linear-gradient(180deg, #89A3FF 4.69%, #FFC9C9 31.25%, #FAE082 61.98%, #DFFFAA 100%) no-repeat;
-    } 
-
-    #contenantButtons{
-        width: 100%;
-        display: flex ;
-        justify-content: center;
-        gap: 2%;
-        margin-bottom: 5%;
-    }
-    .buttons {
-        background-color: #ffffff;
-        border-radius: 6px;
-        width : fit-content ;
-        font-family: 'Advent pro',sans-serif;
-        font-weight: 100;
-        color:#000000;
-        font-size: 1em ;
-        text-align: center;
-        padding: 1%;
+    .buttons:hover{
+        font-weight : bold ;
+        color : #89A3FF;
+        cursor: pointer;
     }
 
-    #mainDiv {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content:center;
-        margin-bottom: 5%;
+    #titleArticle:hover{
+        font-weight : thin;
+        color : #89A3FF;
+        cursor: pointer;
+        
     }
 
-    #blague{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        background-color: white;
-        padding: 1%;
-    }
 
-/*     .contenantLaBlague {
-        margin-bottom: 1%;
-        display: block;
-        justify-self: center;
-        align-self: center;
-        width: fit-content;
-        background-color: white;
-        border-radius: 6px;
-        padding: 1%;
-    }   */
-
-    #meme {
-        max-width: 300px;  
-        object-fit: contain;
-    }
-/* 
-    h3:hover{
-        opacity: 100%;} */

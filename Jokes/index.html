@@ -9,24 +9,36 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
-<body id="background">
-    <div id="enTete">
+<body>
+    <section id="parent">
+    <div>
         <a style="text-decoration:none" href="#" onmouseenter="playAudio()"> <h1> QUELLE GROSSE MARADE</h1></a>
         <audio id="sound">    
             <source src="GrosseMarade.mp3" type="audio/mpeg"/>
         </audio>
     </div> 
-    <div id="contenantButtons">
+    <div class="innerParent" id="divButtons">
+        <div id="weatherIcone"></div>  
+        <p id="temp"></p>
+        <p id="min"></p>
+        <p id="max"></p>
+    </div>
+    <div class=innerParentColumn id="news"></div>
+    <div class="innerParent" id="divButtons">
+        <button class="buttons" id="getAMeme"> Get a meme !</button>
         <button class="buttons" id="getAJoke"> Get a joke !</button>
     </div>
-    <div id="mainDiv">
+    <div class="innerParent" id="divDisplay">
+        <div id="meme">
+        </div>
         <div id="blague">  
             <h2 id="joke"></h2>
             <h2 id="response"></h2>
-        </div>  
-        <div id="meme">
-        </div> 
+        </div>     
     </div>
+<!--     <button class="buttons"> Save this combo </button> -->
+    </section>
+</div>
     <script src="script.js"></script>    
     <script>
         var audio1 = document.getElementById("sound");
@@ -34,6 +46,8 @@
     </script>
 </body>
 </html>
+
+
 
 <!-- bouton lancant le son  -->
 <!--     <div id="contenantButtons">
