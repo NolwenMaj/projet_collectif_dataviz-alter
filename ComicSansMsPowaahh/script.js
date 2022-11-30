@@ -1303,7 +1303,7 @@ fetch(urlNews)
   .then(function (data) { ... INSERER ICI LA FONCTION FOR ... } 
   */
 
-for (var i = 0; i < 7; i++) {
+for (var i = 0; i < 3; i++) {
   // pour prendre uniquements les trois derniers articles parus
   title = data.results[i].title;
   description = data.results[i].description;
