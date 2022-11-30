@@ -871,7 +871,7 @@ getAJoke.onclick = () => {
 // variables météos
 
   let urlMeteo = "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto";
-  const now = /* 14 */ new Date().getHours("fr-FR")  
+  const now =  12  /* new Date().getHours("fr-FR") */  
   const intemperies = document.getElementById("intemperies");
   const nowParsed = parseInt(now);
   const colorDay = "#acbefe";
@@ -945,12 +945,12 @@ function asynchrone() {
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "auto";
             break;
-          case 45:
+          case 45: // mist
             symbole.src = "mm_api_symbols/wsymbol_0006_mist.png";
             intemperies.style.backgroundImage = "url('brouillardtransparent.png')";
-            intemperies.style.backgroundRepeat = "no-repeat";
-            intemperies.style.backgroundSize ="10%"
-          case 48:
+            /* intemperies.style.backgroundRepeat = "no-repeat"; */
+            intemperies.style.backgroundSize ="100%"
+          case 48: //fog
             symbole.src = "mm_api_symbols/wsymbol_0007_fog.png";
             break;
           case 61: // light rain //
@@ -966,7 +966,7 @@ function asynchrone() {
           case 82:
             symbole.src =
               "mm_api_symbols/wsymbol_0018_cloudy_with_heavy_rain.png";
-            intemperies.style.backgroundImage = "url('rain-300x300.png')";
+            intemperies.style.backgroundImage = "url('clouds.png'), url('rain-300x300.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "1000px 1000px ";
             intemperies.style.animation = "rainfall 4s linear infinite";
@@ -988,10 +988,8 @@ function asynchrone() {
             intemperies.style.backgroundImage = "url('neige.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "700px 400px ";
-            intemperies.style.animation =
-              "snowfall 1s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 1s linear forwards infinite";
+            intemperies.style.animation =" snowfall 1s linear forwards infinite";
+            intemperies.style.webkitAnimation =" snowfall 1s linear forwards infinite";
             break;
           case 95:
           case 96:
@@ -1088,6 +1086,12 @@ function asynchrone() {
           case 96:
           case 99: //thunderstorme //
             symbole.src = "mm_api_symbols/wsymbol_0040_thunderstorms_night.png";
+            /* intemperies.style.backgroundColor = "white";  */
+            /* intemperies.style.minHeight = "130%";
+            intemperies.style.backgroundSize = "auto"; */
+            /* body.style.animation ="lightnings 0.2s infinite"; */
+            body.style.animation ="lightnings 1.5s"
+          /*   intemperies.style.webkitAnimation ="lightnings 1s infinite"; */
             break;
           case 71: // light snow //
           case 73:
