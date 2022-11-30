@@ -865,7 +865,7 @@ getAJoke.onclick = () => {
 // variables météos
 
   let urlMeteo = "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&hourly=temperature_2m&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=auto";
-  const now = 14 // new Date().getHours("fr-FR")  
+  const now = /* 14 */ new Date().getHours("fr-FR")  
   const intemperies = document.getElementById("intemperies");
   const nowParsed = parseInt(now);
   const colorDay = "#acbefe";
@@ -903,15 +903,21 @@ function asynchrone() {
         
       // affichage des pictos et fonds intempéries 
       const symbole = document.createElement("img");
-      const codeWeather = 2; // let codeWeather = data.current_weather.weathercode // variable qui fait changer le picto de la méteo
+      const codeWeather = 45 ; // let codeWeather = data.current_weather.weathercode // variable qui fait changer le picto de la méteo
          
       if (nowParsed > 8 && nowParsed < 17) {
         switch (codeWeather) {
           case 0: // sunny
             symbole.src = "mm_api_symbols/wsymbol_0001_sunny.png";
+            intemperies.style.backgroundImage = "url('soleil.png')";
+            intemperies.style.backgroundRepeat = "no-repeat";
+            intemperies.style.backgroundSize ="cover"
             break;
           case 1: // mainly sunny
             symbole.src = "mm_api_symbols/wsymbol_0002_sunny_intervals.png";
+            intemperies.style.backgroundImage = "url('soleil.png')";
+            intemperies.style.backgroundRepeat = "no-repeat";
+            intemperies.style.backgroundSize ="cover"
             break;
           case 2: // white cloud
             symbole.src = "mm_api_symbols/wsymbol_0003_white_cloud.png";
@@ -928,6 +934,9 @@ function asynchrone() {
             break;
           case 45:
             symbole.src = "mm_api_symbols/wsymbol_0006_mist.png";
+            intemperies.style.backgroundImage = "url('brouillardtransparent.png')";
+            intemperies.style.backgroundRepeat = "no-repeat";
+            intemperies.style.backgroundSize ="10%"
           case 48:
             symbole.src = "mm_api_symbols/wsymbol_0007_fog.png";
             break;
