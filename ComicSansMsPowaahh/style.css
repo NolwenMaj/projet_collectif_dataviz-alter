@@ -221,7 +221,7 @@
    }
  }
 
- @keyframes lightnings {
+ @keyframes lightningsNight {
     0% { background-color: #fae89f;}
     2%{background-color: #293254 }
     30% { background-color: #fae89f;}
@@ -235,6 +235,21 @@
     78% { background-color: #fae89f;}
     80% {background-color: #293254 }
     100%{background-color: #293254 }
+  }
+  @keyframes lightningsDay {
+    0% { background-color: #fae89f;}
+    2%{background-color: #acbefe }
+    30% { background-color: #fae89f;}
+    32%{background-color: #acbefe }
+    40% { background-color: #fae89f;}
+    45%{background-color: #acbefe }
+    70% { background-color: #fae89f;}
+    72% {background-color: #acbefe}
+    74% { background-color: #fae89f;}
+    76% {background-color: #acbefe}
+    78% { background-color: #fae89f;}
+    80% {background-color: #acbefe}
+    100%{background-color: #acbefe }
   }
 
   @keyframes rainfall{

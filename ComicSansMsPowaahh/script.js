@@ -876,7 +876,7 @@ getAJoke.onclick = () => {
   const nowParsed = parseInt(now);
   const colorDay = "#acbefe";
   const colorNight = "#293254";
-  const linearLeverSoleil ="linear-gradient(180deg, #080060 0%, #89A3FF 44.79%, #FAE082)";
+  const linearLeverSoleil = "linear-gradient(180deg, #080060 0%, #89A3FF 44.79%, #FAE082)";
   const linearCoucherSoleil ="linear-gradient(180deg, #0E0036 0%, #293254 13.02%, #ACBEFE 65.1%, rgba(198, 172, 254, 0.62) 81.25%, rgba(255, 166, 230, 0.55) 85.94%, rgba(250, 224, 130, 0.85) 96.35%)";
 
 // gestion du fond en fonction de l'heure de la journée
@@ -916,7 +916,7 @@ function asynchrone() {
 
       // affichage des pictos et fonds intempéries
       const symbole = document.createElement("img");
-      const codeWeather = 2; // let codeWeather = data.current_weather.weathercode // variable qui fait changer le picto de la méteo
+      const codeWeather = 45; // let codeWeather = data.current_weather.weathercode // variable qui fait changer le picto de la méteo
 
       if (nowParsed > 8 && nowParsed < 17) {
         switch (codeWeather) {
@@ -941,11 +941,12 @@ function asynchrone() {
             break;
           case 45: // mist
             symbole.src = "mm_api_symbols/wsymbol_0006_mist.png";
-            intemperies.style.backgroundImage = "url('brouillardtransparent.png')";
-            /* intemperies.style.backgroundRepeat = "no-repeat"; */
-            intemperies.style.backgroundSize ="100%"
+             intemperies.style.backgroundImage = " url('brouillard.png')";
+             intemperies.style.backgroundColor = "#acacaccd";
           case 48: //fog
             symbole.src = "mm_api_symbols/wsymbol_0007_fog.png";
+            intemperies.style.backgroundImage = " url('brouillard.png')";
+            intemperies.style.backgroundColor = "#acacaccd";
             break;
           case 61: // light rain //
             symbole.src = "mm_api_symbols/wsymbol_0009_light_rain_showers.png";
@@ -958,8 +959,7 @@ function asynchrone() {
           case 80: //cloudy + heavy rain //
           case 81:
           case 82:
-            symbole.src =
-              "mm_api_symbols/wsymbol_0018_cloudy_with_heavy_rain.png";
+            symbole.src ="mm_api_symbols/wsymbol_0018_cloudy_with_heavy_rain.png";
             intemperies.style.backgroundImage = "url('clouds.png'), url('rain-300x300.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "1000px 1000px ";
@@ -989,6 +989,7 @@ function asynchrone() {
           case 96:
           case 99:
             symbole.src = "mm_api_symbols/wsymbol_0024_thunderstorms.png";
+            body.style.animation ="lightningsDay 1.5s"
             break;
           case 66:
           case 67:
@@ -1006,17 +1007,17 @@ function asynchrone() {
         }
       } else {
         switch (codeWeather) {
-          case 0:
+          case 0: // clear night
             symbole.src = "mm_api_symbols/wsymbol_0008_clear_sky_night.png";
             break;
-          case 1:
+          case 1: // partly cloudy
             symbole.src = "mm_api_symbols/wsymbol_0041_partly_cloudy_night.png";
             intemperies.style.backgroundImage = "url('white-big-cloud.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundRepeat = "no-repeat";
             intemperies.style.backgroundSize = "auto";
             break;
-          case 2:
+          case 2: // mostly cloudy
             symbole.src = "mm_api_symbols/wsymbol_0044_mostly_cloudy_night.png";
             intemperies.style.backgroundImage = "url('white-big-cloud.png')";
             intemperies.style.minHeight = "130%";
@@ -1026,84 +1027,81 @@ function asynchrone() {
           case 51:
             symbole.src = "mm_api_symbols/wsymbol_0066_drizzle_night.png";
             break;
-          case 3:
+          case 3: // cloudy
             symbole.src = "mm_api_symbols/wsymbol_0042_cloudy_night.png";
             intemperies.style.backgroundImage = "url('clouds.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "auto";
             break;
-          case 61:
-            symbole.src =
-              "mm_api_symbols/wsymbol_0025_light_rain_showers_night.png";
+          case 61: // light rain
+            symbole.src ="mm_api_symbols/wsymbol_0025_light_rain_showers_night.png";
             intemperies.style.backgroundImage = "url('rain-300x300.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "500px 500px ";
             intemperies.style.animation = "rainfall 0.5s linear infinite";
             intemperies.style.webkitAnimation = "rainfall 0.5s linear infinite";
             break;
-          case 85:
-            symbole.src =
-              "mm_api_symbols/wsymbol_0027_light_snow_showers_night.png";
+          case 85: // light snow
+            symbole.src ="mm_api_symbols/wsymbol_0027_light_snow_showers_night.png";
             intemperies.style.backgroundImage = "url('neige.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "350px 200px ";
-            intemperies.style.animation =
-              "snowfall 4s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 4s linear forwards infinite";
+            intemperies.style.animation = "snowfall 4s linear forwards infinite";
+            intemperies.style.webkitAnimation ="snowfall 4s linear forwards infinite";
             break;
           case 80:
           case 81:
-          case 82:
-            symbole.src =
-              "mm_api_symbols/wsymbol_0034_cloudy_with_heavy_rain_night.png";
+          case 82: // cloudy rainy
+            symbole.src ="mm_api_symbols/wsymbol_0034_cloudy_with_heavy_rain_night.png";
+            intemperies.style.backgroundImage = "url('clouds.png'), url('rain-300x300.png')";
+            intemperies.style.minHeight = "130%";
+            intemperies.style.backgroundSize = "1000px 1000px ";
+            intemperies.style.animation = "rainfall 4s linear infinite";
+            intemperies.style.webkitAnimation = "rainfall 4s linear infinite";
             break;
-          case 86:
-            symbole.src =
-              "mm_api_symbols/wsymbol_0036_cloudy_with_heavy_snow_night.png";
+          case 86: //cloudy
+            symbole.src ="mm_api_symbols/wsymbol_0036_cloudy_with_heavy_snow_night.png";
             intemperies.style.backgroundImage = "url('neige.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "700px 400px ";
-            intemperies.style.animation =
-              "snowfall 1s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 1s linear forwards infinite";
+            intemperies.style.animation = "snowfall 1s linear forwards infinite";
+            intemperies.style.webkitAnimation = "snowfall 1s linear forwards infinite";
             break;
-          case 45:
+          case 45: //mist
             symbole.src = "mm_api_symbols/wsymbol_0063_mist_night.png";
+             intemperies.style.backgroundImage = " url('brouillard.png')";
+             intemperies.style.backgroundColor = "black";
             break;
-          case 48:
+          case 48: //fog
             symbole.src = "mm_api_symbols/wsymbol_0064_fog_night.png";
-            intemperies.style.opacity = "50%";
+             intemperies.style.backgroundImage = " url('brouillard.png')";
+             intemperies.style.backgroundColor = "black";
             break;
           case 95:
           case 96:
           case 99: //thunderstorme //
             symbole.src = "mm_api_symbols/wsymbol_0040_thunderstorms_night.png";
-            /* intemperies.style.backgroundColor = "white";  */
-            /* intemperies.style.minHeight = "130%";
-            intemperies.style.backgroundSize = "auto"; */
-            /* body.style.animation ="lightnings 0.2s infinite"; */
-            body.style.animation ="lightnings 1.5s"
-          /*   intemperies.style.webkitAnimation ="lightnings 1s infinite"; */
+            body.style.animation ="lightningsNight 1.5s"
             break;
           case 71: // light snow //
           case 73:
-            symbole.src =
-              "mm_api_symbols/wsymbol_0037_cloudy_with_sleet_night.png";
+            symbole.src ="mm_api_symbols/wsymbol_0037_cloudy_with_sleet_night.png";
             intemperies.style.backgroundImage = "url('neige.png')";
             intemperies.style.minHeight = "130%";
             intemperies.style.backgroundSize = "350px 200px ";
-            intemperies.style.animation =
-              "snowfall 4s linear forwards infinite";
-            intemperies.style.webkitAnimation =
-              "snowfall 4s linear forwards infinite";
+            intemperies.style.animation = "snowfall 4s linear forwards infinite";
+            intemperies.style.webkitAnimation = "snowfall 4s linear forwards infinite";
             break;
-          case 75:
+          case 75: // neige fondu 
             symbole.src = "mm_api_symbols/wsymbol_0029_sleet_showers_night.png";
+            intemperies.style.backgroundImage = "url('neige.png')";
+            intemperies.style.minHeight = "130%";
+            intemperies.style.backgroundSize = "700px 400px ";
+            intemperies.style.animation =" snowfall 1s linear forwards infinite";
+            intemperies.style.webkitAnimation =" snowfall 1s linear forwards infinite";
             break;
           case 66:
-          case 67:
+          case 67: // freezing rain night
             symbole.src = "mm_api_symbols/wsymbol_0068_freezing_rain_night.png";
             break;
           default:
